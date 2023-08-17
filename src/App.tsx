@@ -1,9 +1,11 @@
-import { Home } from "./pages/Home";
+import { NavBar } from "./components/navbar/NavBar";
+import AppRoutes from "./router/routerRoot";
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <NavBar />
+      <AppRoutes />
     </div>
   );
 }
