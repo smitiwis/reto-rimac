@@ -1,0 +1,119 @@
+
+// $spacing-sizes: (0, 1, 2, 3, 4, 5);
+// $breakpoints: (
+//   xs: 576px,
+//   sm: 768px,
+//   md: 992px,
+//   lg: 1200px,
+//   xl: 1400px
+// );
+
+@each $size in $spacing-sizes {
+  .mr-#{$size} {
+    margin-right: #{$size * 0.5}rem;
+  }
+
+  .ml-#{$size} {
+    margin-left: #{$size * 0.5}rem;
+  }
+
+  .mt-#{$size} {
+    margin-top: #{$size * 0.5}rem;
+  }
+
+  .mb-#{$size} {
+    margin-bottom: #{$size * 0.5}rem;
+  }
+
+  .mx-#{$size} {
+    margin-left: #{$size * 0.5}rem;
+    margin-right: #{$size * 0.5}rem;
+  }
+
+  .my-#{$size} {
+    margin-top: #{$size * 0.5}rem;
+    margin-bottom: #{$size * 0.5}rem;
+  }
+
+  .pr-#{$size} {
+    padding-right: #{$size * 0.5}rem;
+  }
+
+  .pl-#{$size} {
+    padding-left: #{$size * 0.5}rem;
+  }
+
+  .pt-#{$size} {
+    padding-top: #{$size * 0.5}rem;
+  }
+
+  .pb-#{$size} {
+    padding-bottom: #{$size * 0.5}rem;
+  }
+
+  .px-#{$size} {
+    padding-left: #{$size * 0.5}rem;
+    padding-right: #{$size * 0.5}rem;
+  }
+
+  .py-#{$size} {
+    padding-top: #{$size * 0.5}rem;
+    padding-bottom: #{$size * 0.5}rem;
+  }
+
+  @each $breakpoint, $value in $breakpoints {
+    @media (min-width: $value) {
+      .mr-#{$breakpoint}-#{$size} {
+        margin-right: #{$size * 0.5}rem;
+      }
+
+      .ml-#{$breakpoint}-#{$size} {
+        margin-left: #{$size * 0.5}rem;
+      }
+
+      .mt-#{$breakpoint}-#{$size} {
+        margin-top: #{$size * 0.5}rem;
+      }
+
+      .mb-#{$breakpoint}-#{$size} {
+        margin-bottom: #{$size * 0.5}rem;
+      }
+
+      .mx-#{$breakpoint}-#{$size} {
+        margin-left: #{$size * 0.5}rem;
+        margin-right: #{$size * 0.5}rem;
+      }
+
+      .my-#{$breakpoint}-#{$size} {
+        margin-top: #{$size * 0.5}rem;
+        margin-bottom: #{$size * 0.5}rem;
+      }
+
+      .pr-#{$breakpoint}-#{$size} {
+        padding-right: #{$size * 0.5}rem;
+      }
+
+      .pl-#{$breakpoint}-#{$size} {
+        padding-left: #{$size * 0.5}rem;
+      }
+
+      .pt-#{$breakpoint}-#{$size} {
+        padding-top: #{$size * 0.5}rem;
+      }
+
+      .pb-#{$breakpoint}-#{$size} {
+        padding-bottom: #{$size * 0.5}rem;
+      }
+
+      .px-#{$breakpoint}-#{$size} {
+        padding-left: #{$size * 0.5}rem;
+        padding-right: #{$size * 0.5}rem;
+      }
+
+      .py-#{$breakpoint}-#{$size} {
+        padding-top: #{$size * 0.5}rem;
+        padding-bottom: #{$size * 0.5}rem;
+      }
+    }
+  }
+}
