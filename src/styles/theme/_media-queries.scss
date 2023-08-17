@@ -1,0 +1,32 @@
+@function generate-media-query($breakpoint) {
+    $point: map-get($breakpoints, $breakpoint);
+    @return "(min-width: #{$point})";
+  }
+  
+  @mixin media-breakpoint-up($breakpoint) {
+    @media #{generate-media-query($breakpoint)} {
+      @content;
+    }
+  }
+  
+  // $breakpoints: (
+//   sm: 576px,
+//   md: 768px,
+//   lg: 992px,
+//   xl: 1200px,
+// );
+
+// EJEMPLO D EUSO
+// .body-xxx--xx {
+//   color: red;
+
+//   @include media-breakpoint-up(lg) {
+//     .clas-algo{
+
+//       color: blue;
+//       .asdasd{
+
+//       }
+//     }
+//   }
+// }

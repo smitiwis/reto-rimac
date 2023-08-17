@@ -1,0 +1,77 @@
+// ************ GENERAR -DISPLAYS ***********
+@each $display,
+  $value
+    in (
+      block: $display-block,
+      inline: $display-inline,
+      inline-block: $display-inline-block,
+      flex: $display-flex,
+      none: $display-none
+    )
+{
+  .d-#{$display} {
+    display: $value;
+  }
+
+  @each $breakpoint, $point in $breakpoints {
+    @media (min-width: $point) {
+      .d-#{$breakpoint}-#{$display} {
+        display: $value;
+      }
+    }
+  }
+}
+
+// ************ DIRECIONES DEL FLEX ***********
+@each $direction, $value in (row: row, column: column) {
+  @each $breakpoint, $point in $breakpoints {
+    .flex-#{$direction} {
+      flex-direction: $value;
+    }
+
+    @media (min-width: $point) {
+      .flex-#{$breakpoint}-#{$direction} {
+        flex-direction: $value;
+      }
+    }
+  }
+}
+
+// ESPACIO DE FLEX DIVICION
+@for $i from 1 through 10 {
+  .flex-#{$i} {
+    flex: $i;
+  }
+}
+
+// GEGENERADOR DE CLASES PARA ALIGN-ITEMS
+@each $align,
+  $value
+    in (
+      start: $align-items-start,
+      center: $align-items-center,
+      end: $align-items-end,
+      around: $align-items-around,
+      between: $align-items-between
+    )
+{
+  .align-items-#{$align} {
+    align-items: $value;
+  }
+}
+
+// GENERADOR DE CLASES PARA JUSTIFY-CONTENT
+@each $justify,
+  $value
+    in (
+      start: $justify-content-start,
+      center: $justify-content-center,
+      end: $justify-content-end,
+      around: $justify-content-around,
+      between: $justify-content-between
+    )
+{
+  .j-content-#{$justify} {
+    justify-content: $value;
+  }
+}
