@@ -1,12 +1,12 @@
 import { FC } from "react";
 
-interface props {
+interface Props {
   image: string;
   name: string;
   text: string;
 }
 
-export const ItemNavbar: FC<props> = ({ image, name, text }) => {
+export const ItemNavbar: FC<Props> = ({ image, name, text }) => {
   return (
     <li className="nav-list__item" key={name}>
       <a className="nav-list__link" href="/">

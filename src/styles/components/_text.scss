@@ -6,14 +6,20 @@
 }
 
 .text-title {
+  font-weight: $font-weight-normal;
+  color: $gray-title;
+
   &-h1 {
     font-size: $font-size-xxl;
-    font-weight: $font-weight-normal;
-    color: $gray-title;
 
     &--primary {
       color: $c-primary;
     }
+  }
+
+  &-h2{
+    font-size: $font-size-xl;
+    color: $gray-title;
   }
 }
 

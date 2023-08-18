@@ -2,7 +2,7 @@ import React from "react";
 
 export const BannerHome = () => {
   return (
-    <div className="banner-main">
+    <div className="banner-main bg-gris">
       <div className="container">
         <span className="fs-xxs c-gray-title fw-black">¡NUEVO!</span>
         <h1 className="text-title text-title-h1">

@@ -1,12 +1,48 @@
-.input-rimac {
-  all: unset;
-  padding: 0 0.8rem;
+.rimac-input,
+.rimac-select {
   height: 54px;
   border: solid 1px $gray-neutral-2;
   border-radius: 4px;
-
+  overflow: hidden;
   // TEXT
   font-weight: 400;
   font-size: 1rem;
   color: $gray-title;
+}
+
+// ***** INPUT PERSONALIZADO *****
+.rimac-input {
+  padding: 0 0.8rem;
+}
+
+// ***** SELECT PERSONALIZADO *****
+.rimac-select {
+  position: relative;
+
+  select {
+    all: unset;
+    display: flex;
+    appearance: none;
+    padding: 0 3rem 0 0.8rem;
+    border: none;
+    width: 100%;
+    height: 100%;
+
+    // CENTRAR
+    display: flex;
+    align-items: center;
+
+    &:disabled {
+      opacity: 1;
+      color: $black;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-65%);
+    pointer-events: none;
+  }
 }
