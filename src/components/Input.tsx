@@ -23,7 +23,7 @@ const Input: FC<Props> = ({
     <input
       type={type}
       placeholder={placeholder}
-      className={className}
+      className={`rimac-input ${className}`}
       value={value}
       onChange={handleChange}
     />

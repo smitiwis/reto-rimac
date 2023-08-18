@@ -40,6 +40,14 @@
   }
 }
 
+// GENERAR CLASES PARA CENTRAR TEXTO
+@each $size, $value in (underline: underline) {
+  .text-#{$size} {
+    text-decoration: underline;
+  }
+}
+
+
 .font-roboto{
   font-family: "Roboto", sans-serif;
 }

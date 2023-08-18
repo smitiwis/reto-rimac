@@ -25,8 +25,8 @@ const Select: FC<SelectProps> = ({
   };
 
   return (
-    <div className={className}>
-      <select disabled value={value} onChange={handleChange}>
+    <div className={`rimac-select ${className}`}>
+      <select disabled={disabled} value={value} onChange={handleChange}>
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
