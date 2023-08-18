@@ -7,7 +7,7 @@ export const NavBar = () => {
     <nav className="nav-main">
       <ul className="nav-list">
         {itemsNavBar.map((items) => (
-          <ItemNavbar {...items} />
+          <ItemNavbar {...items} key={items.image}/>
         ))}
       </ul>
     </nav>

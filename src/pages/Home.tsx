@@ -5,9 +5,11 @@ import { Title } from "../components/Title";
 import Select from "../components/Select";
 import Checkbox from "../components/Checkbox";
 import Button from "../components/Button";
+import { documents } from "../constants";
+import { useNavigate } from "react-router";
 
 export const HomePage = () => {
-  const documents = [{ label: "DNI", value: "opcion 1" }];
+  const navigate = useNavigate();
   return (
     <>
       <BannerHome />
@@ -58,7 +60,7 @@ export const HomePage = () => {
             </span>
           </Checkbox>
 
-          <Button className="mt-3" text="COTÍZALO" onClick={()=>{}} />
+          <Button className="mt-3" text="COTÍZALO" onClick={() => {navigate("/arma-plan")}} />
         </div>
       </Container>
     </>

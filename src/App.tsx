@@ -3,12 +3,9 @@ import AppRoutes from "./router/routerRoot";
 
 function App() {
   return (
-    <>
-      <Header />
-      <main>
-        <AppRoutes />
-      </main>
-    </>
+    <main>
+      <AppRoutes />
+    </main>
   );
 }
 
