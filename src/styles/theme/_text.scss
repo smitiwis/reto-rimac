@@ -13,8 +13,8 @@
     )
 {
   .fs-#{$size} {
-    font-size: $value !important;
-    line-height: $value + $value * 0.25 !important;
+    font-size: $value;
+    line-height: $value + $value * 0.3;
   }
 }
 
@@ -25,10 +25,11 @@
       light: $font-weight-light,
       normal: $font-weight-normal,
       bold: $font-weight-bold,
+      black: $font-weight-black,
     )
 {
   .fw-#{$weight} {
-    font-weight: $value !important;
+    font-weight: $value;
   }
 }
 
@@ -37,4 +38,8 @@
   .text-#{$size} {
     text-align: $value;
   }
+}
+
+.font-roboto{
+  font-family: "Roboto", sans-serif;
 }

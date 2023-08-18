@@ -7,6 +7,7 @@ $white: #ffffff;
 $black: #000000;
 
 // GRICES
+$gray: #fafbff;
 $gray-title: #494f66;
 $gray-text: #676f8f;
 $gray-neutral: #a9afd9;
@@ -14,15 +15,16 @@ $gray-neutral-2: #c5cbe0;
 
 // PARA GENERAL COLORES
 $color-palette: (
-  c-primary: $c-primary,
-  c-secondary: $c-secondary,
-  c-success: $c-success,
-  c-white: $white,
-  c-black: $black,
-  c-gray-title: $gray-title,
-  c-gray-text: $gray-text,
-  c-gray-neutral: $gray-neutral,
-  c-gray-neutral-2: $gray-neutral-2,
+  primary: $c-primary,
+  secondary: $c-secondary,
+  success: $c-success,
+  blanco: $white,
+  negro: $black,
+  gray: $gray,
+  gray-title: $gray-title,
+  gray-text: $gray-text,
+  gray-neutral: $gray-neutral,
+  gray-neutral-2: $gray-neutral-2,
 );
 
 // BREAKPOINTS
@@ -46,17 +48,18 @@ $spacing-sizes: (0, 1, 2, 3, 4, 5);
 // VARIABLES PARA GROSOR DE FUENTES
 $font-weight-light: 300;
 $font-weight-normal: 400;
-$font-weight-bold: 700;
+$font-weight-bold: 500;
+$font-weight-black: 700;
 
 // VAROABLES TAMAÑO DE LETRAS
-$font-size-xxxs: 0.625rem;
-$font-size-xxs: 0.67rem;
+$font-size-xxxs: 0.5rem;
+$font-size-xxs: 0.625rem;
 $font-size-xs: 0.75rem;
 $font-size-sm: 0.875rem;
 $font-size-md: 1rem;
 $font-size-lg: 1.25rem;
 $font-size-xl: 1.5rem;
-$font-size-xxl: 2.5rem;
+$font-size-xxl: 1.75rem;
 $font-size-xxxl: 3.5rem;
 
 $font-sizes: (

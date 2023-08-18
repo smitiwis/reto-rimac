@@ -1,0 +1,10 @@
+.banner-main{
+    position: relative;
+    padding: 2.5rem 0;
+    
+    &__image{
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}

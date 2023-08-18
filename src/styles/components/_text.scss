@@ -1,7 +1,25 @@
 .text-call {
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 1.5rem;
-    color: $c-secondary;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  color: $c-secondary;
+}
+
+.text-title {
+  &-h1 {
+    font-size: $font-size-xxl;
+    font-weight: $font-weight-normal;
+    color: $gray-title;
+
+    &--primary {
+      color: $c-primary;
+    }
   }
-  
+}
+
+.text-parrafo {
+  font-size: $font-size-sm;
+  line-height: 24px;
+  font-weight: $font-weight-normal;
+  color: $gray-text;
+}
