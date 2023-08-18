@@ -14,13 +14,18 @@ const AppRoutes = () => {
   return (
     <Router>
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/inicio" element={<HomePage />} />
-        <Route path="/arma-plan" element={<BuildPlanPage />} />
-        <Route path="/gracias" element={<ThankPage />} />
-        <Route path="*" element={<Navigate to="/inicio" />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/inicio" element={<HomePage />} />
+          <Route path="/arma-plan" element={<BuildPlanPage />} />
+          <Route path="/gracias" element={<ThankPage />} />
+          <Route path="*" element={<Navigate to="/inicio" />} />
+        </Routes>
+      </main>
+      <footer>
+        
+      </footer>
     </Router>
   );
 };
