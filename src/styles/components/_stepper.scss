@@ -1,0 +1,14 @@
+.step-main {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  border-top: solid 1px $gray-border;
+  border-bottom: solid 1px $gray-border;
+}
+
+.barra-end {
+  background-color: $c-secondary;
+  border-radius: 3px;
+  height: 0.4rem;
+  flex-grow: 1;
+}

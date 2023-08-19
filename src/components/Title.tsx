@@ -1,10 +1,14 @@
+import { type } from "os";
 import { FC } from "react";
 
 interface Props {
-  className: string;
+  className?: string;
   text: string;
+  type: "h1" | "h2" | "h3";
 }
 
-export const Title: FC<Props> = ({ className, text }) => {
-  return <div className={`${className}`}>{text}</div>;
+export const Title: FC<Props> = ({ className, text, type = "h1" }) => {
+  return (
+    <div className={`text-title text-title-${type} ${className}`}>{text}</div>
+  );
 };

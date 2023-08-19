@@ -17,15 +17,55 @@
     }
   }
 
-  &-h2{
+  &-h2 {
     font-size: $font-size-xl;
+    color: $gray-title;
+  }
+
+  &-h3 {
+    font-size: $font-size-lg;
+    color: $gray-title;
+  }
+
+  &-h4 {
+    font-size: $font-size-md;
+    line-height: $font-size-md * 1.4;
+    color: $gray-title;
+  }
+
+  &-h5 {
+    font-size: $font-size-sm;
+    color: $gray-title;
+  }
+
+  &-h6 {
+    font-size: $font-size-xs;
     color: $gray-title;
   }
 }
 
 .text-parrafo {
   font-size: $font-size-sm;
-  line-height: 24px;
+  line-height: 1.5rem;
   font-weight: $font-weight-normal;
   color: $gray-text;
+}
+
+.text-stepper {
+  font-size: $font-size-xxs;
+  font-weight: $font-weight-black;
+  color: $gray-text;
+  letter-spacing: 0.5px;
+}
+
+.text-standard {
+  color: $gray-text;
+  font-family: $lato
+}
+
+
+.text-info{
+  color: $gray-neutral;
+  font-size: $font-size-xs;
+  font-family: $roboto
 }

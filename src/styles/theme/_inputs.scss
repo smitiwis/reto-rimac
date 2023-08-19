@@ -13,6 +13,31 @@
 // ***** INPUT PERSONALIZADO *****
 .rimac-input {
   padding: 0 0.8rem;
+  position: relative;
+  z-index: 5;
+}
+
+.input-dinamic {
+  position: relative;
+
+  &__remove,
+  &__add {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    cursor: pointer;
+    transform: translateY(-45%);
+    background-color: transparent;
+    border-radius: 50%;
+  }
+
+  &__remove {
+    left: 15px;
+  }
+
+  &__add {
+    right: 15px;
+  }
 }
 
 // ***** SELECT PERSONALIZADO *****
@@ -55,7 +80,7 @@
   font-size: 1rem;
   cursor: pointer;
 
-  &__label{
+  &__label {
     font-size: $font-size-xs;
     font-weight: $font-weight-normal;
     font-family: "Roboto" sans-serif;

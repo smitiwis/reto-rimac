@@ -25,11 +25,11 @@
       light: $font-weight-light,
       normal: $font-weight-normal,
       bold: $font-weight-bold,
-      black: $font-weight-black,
+      black: $font-weight-black
     )
 {
   .fw-#{$weight} {
-    font-weight: $value;
+    font-weight: $value !important;
   }
 }
 
@@ -47,7 +47,10 @@
   }
 }
 
+.text-roboto {
+  font-family: $roboto;
+}
 
-.font-roboto{
-  font-family: "Roboto", sans-serif;
+.text-lato {
+  font-family: $lato;
 }

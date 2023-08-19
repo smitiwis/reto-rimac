@@ -1,0 +1,14 @@
+.card-main{
+    min-height: 170px;
+    padding: 1.3rem;
+    background-color: $white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px 0 rgba(163, 171, 204, 0.2);
+    position: relative;
+
+    &__image{
+        position: absolute;
+        right: -0.6rem;
+        bottom: 0;
+    }
+}

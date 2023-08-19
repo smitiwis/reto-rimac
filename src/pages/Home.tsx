@@ -14,10 +14,7 @@ export const HomePage = () => {
     <>
       <BannerHome />
       <Container>
-        <Title
-          className="text-title text-title-h2 my-4"
-          text="Déjanos tus datos"
-        />
+        <Title className="my-4" type="h2" text="Déjanos tus datos" />
         <div className="d-flex flex-column">
           <div className="d-flex mb-3">
             <Select
@@ -60,7 +57,13 @@ export const HomePage = () => {
             </span>
           </Checkbox>
 
-          <Button className="mt-3" text="COTÍZALO" onClick={() => {navigate("/arma-plan")}} />
+          <Button
+            className="mt-3"
+            text="COTÍZALO"
+            onClick={() => {
+              navigate("/arma-plan");
+            }}
+          />
         </div>
       </Container>
     </>

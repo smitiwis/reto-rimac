@@ -1,9 +1,9 @@
 @each $color-name, $color-value in $color-palette {
   .c-#{$color-name} {
-    color: $color-value;
+    color: $color-value !important;
   }
   
   .bg-#{$color-name} {
-    background-color: $color-value;
+    background-color: $color-value !important;
   }
 }

@@ -13,6 +13,7 @@ $gray-title: #494f66;
 $gray-text: #676f8f;
 $gray-neutral: #a9afd9;
 $gray-neutral-2: #c5cbe0;
+$gray-border: #D7DBF5;
 
 // PARA GENERAL COLORES
 $color-palette: (
@@ -27,6 +28,10 @@ $color-palette: (
   gray-neutral: $gray-neutral,
   gray-neutral-2: $gray-neutral-2,
 );
+
+// FUENTES
+$roboto: "Roboto", sans-serif;
+$lato: "Lato", sans-serif;
 
 // BREAKPOINTS
 $point_xs: 576px;
