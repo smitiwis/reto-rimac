@@ -7,9 +7,16 @@ import Checkbox from "../components/Checkbox";
 import Button from "../components/Button";
 import { documents } from "../constants";
 import { useNavigate } from "react-router";
+import { useState } from "react";
 
 export const HomePage = () => {
+  const [isChecked, setIsChecked] = useState(true);
   const navigate = useNavigate();
+
+  const handleCheckboxChange = (newIsChecked: boolean) => {
+    setIsChecked(newIsChecked);
+  };
+  
   return (
     <>
       <BannerHome />
@@ -47,7 +54,7 @@ export const HomePage = () => {
             value=""
           />
 
-          <Checkbox className="my-4">
+          <Checkbox className="my-4" isChecked={isChecked} onChange={handleCheckboxChange}>
             <span>
               Acepto la{" "}
               <b className="text-underline">

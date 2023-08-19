@@ -18,6 +18,7 @@ import Input from "../components/Input";
 import { Switch } from "../components/Switch";
 import Button from "../components/Button";
 import { useAmountContext } from "../contexts/sureAmount/sureAmountProvider";
+import { formatCurrency } from "../helpers/formatCurrency";
 
 export const BuildPlanPage = () => {
   const navigate = useNavigate();
@@ -58,12 +59,12 @@ export const BuildPlanPage = () => {
           <div className="d-flex align-items-center gap-3">
             <Text
               className="text-title-h6 c-gray-text my-0"
-              text={`MIN: $${state.min}`}
+              text={`MIN: ${formatCurrency(state.min, '$')}`}
             />
             <Separator />
             <Text
               className="text-title-h6 c-gray-text my-0"
-              text={`MAX: $${state.max}`}
+              text={`MAX: ${formatCurrency(state.max, '$')}`}
             />
           </div>
           <div className="input-dinamic mt-4">
@@ -78,7 +79,7 @@ export const BuildPlanPage = () => {
               placeholder="Placa"
               className="text-center w-100"
               onChange={() => {}}
-              value={state.amount}
+              value={`${formatCurrency(state.amount, '$')}`}
             />
 
             <div
