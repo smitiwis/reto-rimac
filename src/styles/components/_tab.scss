@@ -1,0 +1,30 @@
+// TAB-MAIN
+
+.tab-main {
+}
+
+.react-tabs {
+  &__tab-list {
+    border-bottom: none;
+    display: flex;
+  }
+
+  &__tab {
+    text-align: center;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-black;
+    position: static;
+    border-radius: 0;
+    color: $gray-title;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid 2px $gray-border;
+    transition: all 0.3s;
+
+    &--selected {
+      color: $c-primary;
+      border-bottom: solid 2px $c-primary !important;
+    }
+  }
+}

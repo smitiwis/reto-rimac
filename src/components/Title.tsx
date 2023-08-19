@@ -1,4 +1,3 @@
-import { type } from "os";
 import { FC } from "react";
 
 interface Props {

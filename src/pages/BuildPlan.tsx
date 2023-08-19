@@ -1,4 +1,5 @@
-import React from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+
 import { Container } from "../components/Layouts/Container";
 import { Stepper } from "../components/Stepper/Stepper";
 import { Title } from "../components/Title";
@@ -69,7 +70,24 @@ export const BuildPlanPage = () => {
           </div>
 
           <Title className="mt-5" type="h3" text="Agrega o quita coberturas" />
-          
+
+          <Tabs className="tab-main mt-4">
+            <TabList>
+              <Tab>PROTEGE TU AUTO</Tab>
+              <Tab>PROTEGE A LOS QUE TE RODEAN</Tab>
+              <Tab>MEJORA TU PLAN</Tab>
+            </TabList>
+
+            <TabPanel>
+              <h2>ASD SS 1</h2>
+            </TabPanel>
+            <TabPanel>
+              <h2>AA SS 2</h2>
+            </TabPanel>
+            <TabPanel>
+              <h2>AA conteSSSnt 3</h2>
+            </TabPanel>
+          </Tabs>
         </Container>
       </div>
     </>
