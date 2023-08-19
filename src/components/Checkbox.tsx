@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 
-type Props = {
+interface Props {
   className?: string;
   children?: ReactNode;
   isChecked: boolean;

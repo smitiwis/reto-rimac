@@ -5,6 +5,7 @@ interface Props {
   className?: string;
   value: any;
   type?: string;
+  disabled?: boolean;
   onChange: (value: string) => void;
 }
 
@@ -13,6 +14,7 @@ const Input: FC<Props> = ({
   className,
   value,
   type = "text",
+  disabled = false,
   onChange,
 }) => {
   const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -21,6 +23,7 @@ const Input: FC<Props> = ({
 
   return (
     <input
+      disabled={disabled}
       type={type}
       placeholder={placeholder}
       className={`rimac-input ${className}`}

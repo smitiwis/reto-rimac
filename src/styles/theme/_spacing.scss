@@ -1,5 +1,5 @@
 // GENERADOR ANCHOS
-@each $width, $value in (0: 0%, 25: 25%, 50: 50%, 75: 75%, 100: 100%, content: content) {
+@each $width, $value in (0: 0%, 25: 25%, 50: 50%, 75: 75%, 100: 100%, content: fit-content) {
   .w-#{$width} {
     width: $value;
   }

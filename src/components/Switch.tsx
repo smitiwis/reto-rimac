@@ -1,15 +1,21 @@
-import { useState } from "react";
+import { FC, ReactNode } from "react";
 
-export const Switch = () => {
-  const [isChecked, setIsChecked] = useState(false);
+interface Props {
+  isChecked: boolean;
+  onChange: (isChecked: boolean) => void;
+}
 
-  const handleToggle = () => {
-    setIsChecked(!isChecked);
+export const Switch: FC<Props> = ({
+  isChecked,
+  onChange,
+}) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(event.target.checked);
   };
-  
+
   return (
     <label className="rimac-switch">
-      <input type="checkbox" checked={isChecked} onChange={handleToggle} />
+      <input type="checkbox" checked={isChecked} onChange={handleChange} />
       <span className="slider"></span>
     </label>
   );
