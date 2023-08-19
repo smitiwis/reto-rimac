@@ -1,10 +1,11 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 
 interface Props {
-  text: string;
+  text?: string;
   className?: string;
+  children?: ReactNode;
 }
 
-export const Text: FC<Props> = ({ text, className }) => {
-  return <p className={`${className}`}>{text}</p>;
+export const Text: FC<Props> = ({ text, className, children }) => {
+  return <p className={`${className}`}>{children ? children : text}</p>;
 };

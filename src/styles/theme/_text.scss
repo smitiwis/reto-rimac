@@ -15,7 +15,7 @@
 {
   .fs-#{$size} {
     font-size: $value;
-    line-height: $value + $value * 0.3;
+    line-height: $value + $value * 0.45;
   }
 }
 
