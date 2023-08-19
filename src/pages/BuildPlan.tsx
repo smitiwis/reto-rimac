@@ -17,12 +17,12 @@ import { Separator } from "../components/Separator";
 import Input from "../components/Input";
 import { Switch } from "../components/Switch";
 import Button from "../components/Button";
-import { useAmountContext } from "../contexts/sureAmount/sureAmountProvider";
 import { formatCurrency } from "../helpers/formatCurrency";
+import { useSumAssuredContext } from "../contexts/sureAmount/sumAssuredProvider";
 
 export const BuildPlanPage = () => {
   const navigate = useNavigate();
-  const { state, dispatch } = useAmountContext();
+  const { state, dispatch } = useSumAssuredContext();
 
   return (
     <>
@@ -79,7 +79,7 @@ export const BuildPlanPage = () => {
               placeholder="Placa"
               className="text-center w-100"
               onChange={() => {}}
-              value={`${formatCurrency(state.amount, '$')}`}
+              value={`${formatCurrency(state.sumAssured, '$')}`}
             />
 
             <div

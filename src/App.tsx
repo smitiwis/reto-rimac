@@ -1,11 +1,11 @@
-import { AmountProvider } from "./contexts/sureAmount/sureAmountProvider";
+import { SumAssuredProvider } from "./contexts/sureAmount/sumAssuredProvider";
 import AppRoutes from "./router/routerRoot";
 
 function App() {
   return (
-    <AmountProvider>
+    <SumAssuredProvider>
       <AppRoutes />
-    </AmountProvider>
+    </SumAssuredProvider>
   );
 }
 
