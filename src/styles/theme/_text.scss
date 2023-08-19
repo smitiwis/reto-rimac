@@ -28,7 +28,7 @@
       black: $font-weight-black
     )
 {
-  .fw-#{$weight} {
+  .fw-#{"" + $weight} {
     font-weight: $value !important;
   }
 }
