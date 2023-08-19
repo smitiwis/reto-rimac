@@ -6,9 +6,7 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from "react-accessible-accordion";
-
-// Demo styles, see 'Styles' section below for some notes on use.
-import "react-accessible-accordion/dist/fancy-example.css";
+import { useNavigate } from "react-router";
 
 import { Container } from "../components/Layouts/Container";
 import { Stepper } from "../components/Stepper/Stepper";
@@ -21,6 +19,8 @@ import { Switch } from "../components/Switch";
 import Button from "../components/Button";
 
 export const BuildPlanPage = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <Stepper text="PASO 2 DE 2" />
@@ -83,7 +83,7 @@ export const BuildPlanPage = () => {
 
           <Title className="mt-5" type="h3" text="Agrega o quita coberturas" />
         </Container>
-        <Tabs className="tab-main mt-4">
+        <Tabs className="tab-main mt-2">
           <TabList>
             <Tab>PROTEGE TU AUTO</Tab>
             <Tab>PROTEGE A LOS QUE TE RODEAN</Tab>
@@ -100,7 +100,7 @@ export const BuildPlanPage = () => {
                   <img src="/images/img-tireMiss.jpg" alt="llanta robada" />
                 </div>
                 <div className="flex-grow-1 ">
-                  <div className="d-flex j-content-between">
+                  <div className="d-flex j-content-between gap-3">
                     <Text className="text-title-h4 mt-0" text="Llanta robada" />
                     <Switch />
                   </div>
@@ -131,11 +131,11 @@ export const BuildPlanPage = () => {
                 style={{ borderBottom: "solid 1px #D7DBF5" }}
               >
                 <div className="mr-3">
-                  <img src="/images/img-tireMiss.jpg" alt="llanta robada" />
+                  <img src="/images/img-choque.jpg" alt="Choque img" />
                 </div>
                 <div className="flex-grow-1">
-                  <div className="d-flex j-content-between">
-                    <Text className="text-title-h4 mt-0" text="Llanta robada" />
+                  <div className="d-flex j-content-between gap-3">
+                    <Text className="text-title-h4 mt-0" text=" Choque y/o pasarte la luz roja " />
                     <Switch />
                   </div>
                   {/* <p className="text-parrafo my-0">
@@ -162,11 +162,11 @@ export const BuildPlanPage = () => {
                 style={{ borderBottom: "solid 1px #D7DBF5" }}
               >
                 <div className="mr-3">
-                  <img src="/images/img-tireMiss.jpg" alt="llanta robada" />
+                  <img src="/images/img-runOver.jpg" alt="Atropello img" />
                 </div>
                 <div className="flex-grow-1">
-                  <div className="flex-grow-1 d-flex j-content-between">
-                    <Text className="text-title-h4 mt-0" text="Llanta robada" />
+                  <div className="flex-grow-1 d-flex j-content-between gap-3">
+                    <Text className="text-title-h4 mt-0" text="Atropello en la vía Evitamiento " />
                     <Switch />
                   </div>
                   {/* <p className="text-parrafo my-0">
@@ -203,7 +203,14 @@ export const BuildPlanPage = () => {
             <span className="fs-xxs c-gray-title fw-black">MENSUAL</span>
           </div>
           <div>
-            <Button size="small" className="px-7" text="Lo quiero" onClick={() => {}} />
+            <Button
+              size="small"
+              className="px-7"
+              text="Lo quiero"
+              onClick={() => {
+                navigate("/gracias");
+              }}
+            />
           </div>
         </div>
       </div>
