@@ -3,7 +3,7 @@ import { ChangeEvent, FC } from "react";
 interface Props {
   placeholder?: string;
   className?: string;
-  value: string;
+  value: any;
   type?: string;
   onChange: (value: string) => void;
 }

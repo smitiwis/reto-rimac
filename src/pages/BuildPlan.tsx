@@ -17,9 +17,11 @@ import { Separator } from "../components/Separator";
 import Input from "../components/Input";
 import { Switch } from "../components/Switch";
 import Button from "../components/Button";
+import { useAmountContext } from "../contexts/sureAmount/sureAmountProvider";
 
 export const BuildPlanPage = () => {
   const navigate = useNavigate();
+  const { state, dispatch } = useAmountContext();
 
   return (
     <>
@@ -56,16 +58,19 @@ export const BuildPlanPage = () => {
           <div className="d-flex align-items-center gap-3">
             <Text
               className="text-title-h6 c-gray-text my-0"
-              text="MIN: $12.500"
+              text={`MIN: $${state.min}`}
             />
             <Separator />
             <Text
               className="text-title-h6 c-gray-text my-0"
-              text="MAX: $12.500"
+              text={`MAX: $${state.max}`}
             />
           </div>
           <div className="input-dinamic mt-4">
-            <div className="input-dinamic__remove">
+            <div
+              className="input-dinamic__remove"
+              onClick={() => dispatch({ type: "DECREMENT" })}
+            >
               <img src="/images/icon-remove.jpg" alt="" />
             </div>
 
@@ -73,10 +78,13 @@ export const BuildPlanPage = () => {
               placeholder="Placa"
               className="text-center w-100"
               onChange={() => {}}
-              value="$14,300"
+              value={state.amount}
             />
 
-            <div className="input-dinamic__add">
+            <div
+              className="input-dinamic__add"
+              onClick={() => dispatch({ type: "INCREMENT" })}
+            >
               <img src="/images/icon-add.jpg" alt="" />
             </div>
           </div>
@@ -135,7 +143,10 @@ export const BuildPlanPage = () => {
                 </div>
                 <div className="flex-grow-1">
                   <div className="d-flex j-content-between gap-3">
-                    <Text className="text-title-h4 mt-0" text=" Choque y/o pasarte la luz roja " />
+                    <Text
+                      className="text-title-h4 mt-0"
+                      text=" Choque y/o pasarte la luz roja "
+                    />
                     <Switch />
                   </div>
                   {/* <p className="text-parrafo my-0">
@@ -166,7 +177,10 @@ export const BuildPlanPage = () => {
                 </div>
                 <div className="flex-grow-1">
                   <div className="flex-grow-1 d-flex j-content-between gap-3">
-                    <Text className="text-title-h4 mt-0" text="Atropello en la vía Evitamiento " />
+                    <Text
+                      className="text-title-h4 mt-0"
+                      text="Atropello en la vía Evitamiento "
+                    />
                     <Switch />
                   </div>
                   {/* <p className="text-parrafo my-0">
