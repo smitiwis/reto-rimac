@@ -124,3 +124,56 @@
     }
   }
 }
+
+//  ***** SWITCH  ****
+.rimac-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 30px;
+
+  /* The switch itself */
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    /* Estilos cuando esta en checked*/
+    &:checked + .slider {
+      background-color: $c-success;
+
+      /* Styling the switch's slider when it's checked */
+      &::before {
+        transform: translateX(20px);
+      }
+    }
+  }
+
+  // Slider
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $gray-switch;
+    transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 30px;
+
+    // Estilos circulo cuando esta en checked
+    &::before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 2px;
+      bottom: 2px;
+      background-color: $white;
+      transition: 0.4s;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+  }
+}

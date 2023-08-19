@@ -60,12 +60,19 @@
 
 .text-standard {
   color: $gray-text;
-  font-family: $lato
+  font-family: $lato;
 }
 
-
-.text-info{
+.text-info {
   color: $gray-neutral;
   font-size: $font-size-xs;
-  font-family: $roboto
+  font-family: $roboto;
+
+  &__xs {
+    font-size: $font-size-xxs;
+  }
+  
+  &--active {
+    color: $c-secondary;
+  }
 }

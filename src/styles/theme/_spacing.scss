@@ -28,124 +28,124 @@
 {
   @each $breakpoint, $point in $breakpoints {
     .m-#{$spacing} {
-      margin: $value;
+      margin: $value !important;
     }
 
     .mt-#{$spacing} {
-      margin-top: $value;
+      margin-top: $value !important;
     }
 
     .mr-#{$spacing} {
-      margin-right: $value;
+      margin-right: $value !important;
     }
 
     .mb-#{$spacing} {
-      margin-bottom: $value;
+      margin-bottom: $value !important;
     }
 
     .ml-#{$spacing} {
-      margin-left: $value;
+      margin-left: $value !important;
     }
 
     .mx-#{$spacing} {
-      margin-left: $value;
-      margin-right: $value;
+      margin-left: $value !important;
+      margin-right: $value !important;
     }
 
     .my-#{$spacing} {
-      margin-top: $value;
-      margin-bottom: $value;
+      margin-top: $value !important;
+      margin-bottom: $value !important;
     }
 
     .p-#{$spacing} {
-      padding: $value;
+      padding: $value !important;
     }
 
     .pt-#{$spacing} {
-      padding-top: $value;
+      padding-top: $value !important;
     }
 
     .pr-#{$spacing} {
-      padding-right: $value;
+      padding-right: $value !important;
     }
 
     .pb-#{$spacing} {
-      padding-bottom: $value;
+      padding-bottom: $value !important;
     }
 
     .pl-#{$spacing} {
-      padding-left: $value;
+      padding-left: $value !important;
     }
 
     .px-#{$spacing} {
-      padding-left: $value;
-      padding-right: $value;
+      padding-left: $value !important;
+      padding-right: $value !important;
     }
 
     .py-#{$spacing} {
-      padding-top: $value;
-      padding-bottom: $value;
+      padding-top: $value !important;
+      padding-bottom: $value !important;
     }
 
     @media (min-width: $point) {
       .m-#{$breakpoint}-#{$spacing} {
-        margin: $value;
+        margin: $value !important;
       }
 
       .mt-#{$breakpoint}-#{$spacing} {
-        margin-top: $value;
+        margin-top: $value !important;
       }
 
       .mr-#{$breakpoint}-#{$spacing} {
-        margin-right: $value;
+        margin-right: $value !important;
       }
 
       .mb-#{$breakpoint}-#{$spacing} {
-        margin-bottom: $value;
+        margin-bottom: $value !important;
       }
 
       .ml-#{$breakpoint}-#{$spacing} {
-        margin-left: $value;
+        margin-left: $value !important;
       }
 
       .mx-#{$breakpoint}-#{$spacing} {
-        margin-left: $value;
-        margin-right: $value;
+        margin-left: $value !important;
+        margin-right: $value !important;
       }
 
       .my-#{$breakpoint}-#{$spacing} {
-        margin-top: $value;
-        margin-bottom: $value;
+        margin-top: $value !important;
+        margin-bottom: $value !important;
       }
 
       .p-#{$breakpoint}-#{$spacing} {
-        padding: $value;
+        padding: $value !important;
       }
 
       .pt-#{$breakpoint}-#{$spacing} {
-        padding-top: $value;
+        padding-top: $value !important;
       }
 
       .pr-#{$breakpoint}-#{$spacing} {
-        padding-right: $value;
+        padding-right: $value !important;
       }
 
       .pb-#{$breakpoint}-#{$spacing} {
-        padding-bottom: $value;
+        padding-bottom: $value !important;
       }
 
       .pl-#{$breakpoint}-#{$spacing} {
-        padding-left: $value;
+        padding-left: $value !important;
       }
 
       .px-#{$breakpoint}-#{$spacing} {
-        padding-left: $value;
-        padding-right: $value;
+        padding-left: $value !important;
+        padding-right: $value !important;
       }
 
       .py-#{$breakpoint}-#{$spacing} {
-        padding-top: $value;
-        padding-bottom: $value;
+        padding-top: $value !important;
+        padding-bottom: $value !important;
       }
     }
   }

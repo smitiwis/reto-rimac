@@ -1,17 +1,16 @@
 .btn {
   border: none;
+  padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
   letter-spacing: 0.05rem;
-  cursor: pointer;
   transition: background-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
 
   &--primary {
     background-color: $c-primary;
     color: $white;
-    height: 3.5rem;
 
     font-size: $font-size-sm;
-    font-weight: $font-weight-black;
   }
 
   &:hover {
@@ -20,5 +19,24 @@
 
   &:active {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.23);
+  }
+
+  &-block {
+    display: block;
+  }
+
+  &-small {
+    height: 2.725rem;
+    font-weight: $font-weight-normal;
+  }
+
+  &-medium {
+    height: 3.5rem;
+    font-weight: $font-weight-black;
+  }
+
+  &-large {
+    height: 3.5rem;
+    font-weight: $font-weight-black;
   }
 }
