@@ -11,6 +11,7 @@ interface SelectProps {
   value: string;
   name?: string;
   disabled?: boolean;
+  errors?: any;
   onChange: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
 
@@ -20,6 +21,7 @@ const Select: FC<SelectProps> = ({
   value,
   disabled = false,
   name,
+  errors,
   onChange,
 }) => {
 
@@ -33,6 +35,7 @@ const Select: FC<SelectProps> = ({
           </option>
         ))}
       </select>
+      {/* {errors.dni && <span className="error">{errors.dni}</span>} */}
       <div className="rimac-select__icon">
         <img src="/images/icon-select.svg" alt="" />
       </div>

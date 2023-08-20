@@ -76,3 +76,10 @@
     color: $c-secondary;
   }
 }
+
+.text-error{
+  font-size: $font-size-xxs;
+  color: $c-primary;
+  font-weight: $font-weight-black;
+  z-index: 15;
+}

@@ -7,24 +7,23 @@ import Checkbox from "../components/Checkbox";
 import Button from "../components/Button";
 import { documents } from "../constants";
 import { useNavigate } from "react-router";
-import { useState } from "react";
 import { useForm } from "../hooks/UseForm";
 
 export const HomePage = () => {
-  const { formValues, handleChange, handleSubmit, errors } = useForm();
+  const {
+    formValues,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    errors,
+    touched,
+  } = useForm();
   const navigate = useNavigate();
 
   return (
     <>
       <BannerHome />
       <Container>
-        <pre className=" my-6">
-          Documento: {formValues.document} <br />
-          Numero: {formValues.documentNumber} <br />
-          Cell: {formValues.phone} <br />
-          Placa: {formValues.plateMumber} <br />
-          Terms: {JSON.stringify(formValues.acceptTerms)} <br />
-        </pre>
         <Title className="my-4" type="h2" text="Déjanos tus datos" />
         <form className="d-flex flex-column" onSubmit={handleSubmit}>
           <div className="d-flex mb-3">
@@ -42,31 +41,43 @@ export const HomePage = () => {
                 placeholder="Nr. de doc"
                 name="documentNumber"
                 value={formValues.documentNumber}
+                error={errors.documentNumber}
+                touched={touched.documentNumber}
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
             </div>
           </div>
           <Input
             className="flex-grow-1 mb-3"
-            placeholder="celular"
+            placeholder="Celular"
             name="phone"
             type="number"
             value={formValues.phone}
+            error={errors.phone}
+            touched={touched.phone}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
           <Input
             className="flex-grow-1"
             placeholder="Número de placa"
             name="plateMumber"
             value={formValues.plateMumber}
+            error={errors.plateMumber}
+            touched={touched.plateMumber}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
 
           <Checkbox
             className="my-4"
             name="acceptTerms"
             isChecked={formValues.acceptTerms}
+            error={errors.acceptTerms}
+            touched={touched.acceptTerms}
             onChange={handleChange}
+            onBlur={handleBlur}
           >
             <span>
               Acepto la{" "}
@@ -79,10 +90,10 @@ export const HomePage = () => {
 
           <Button
             type="submit"
-            className="mt-3"
+            className="mt-2"
             text="COTÍZALO"
             onClick={() => {
-              navigate("/arma-plan");
+              // navigate("/arma-plan");
             }}
           />
         </form>
