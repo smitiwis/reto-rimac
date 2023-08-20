@@ -1,22 +1,28 @@
-import { FC, ReactNode } from "react";
+import { ChangeEvent, FC, ReactNode } from "react";
 
 interface Props {
   className?: string;
   children?: ReactNode;
   isChecked: boolean;
-  onChange: (isChecked: boolean) => void;
-};
+  name?: string;
+  onChange: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+}
 
-
-const Checkbox: FC<Props> = ({ className, children, isChecked, onChange }) => {
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(event.target.checked);
-  };
-
+const Checkbox: FC<Props> = ({
+  className,
+  name,
+  children,
+  isChecked,
+  onChange,
+}) => {
   return (
     <label className={`${className} rimac-checkbox`}>
-      <input type="checkbox"  checked={isChecked}  onChange={handleChange}/>
+      <input
+        name={name}
+        type="checkbox"
+        checked={isChecked}
+        onChange={onChange}
+      />
       <span className="checkmark"></span>
       {children && <span className="rimac-checkbox__label">{children}</span>}
     </label>

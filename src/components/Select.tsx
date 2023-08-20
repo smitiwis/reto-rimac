@@ -9,8 +9,9 @@ interface SelectProps {
   options: SelectOption[];
   className?: string;
   value: string;
+  name?: string;
   disabled?: boolean;
-  onChange: (value: string) => void;
+  onChange: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
 
 const Select: FC<SelectProps> = ({
@@ -18,15 +19,14 @@ const Select: FC<SelectProps> = ({
   className,
   value,
   disabled = false,
+  name,
   onChange,
 }) => {
-  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    onChange(event.target.value);
-  };
+
 
   return (
     <div className={`rimac-select ${className}`}>
-      <select disabled={disabled} value={value} onChange={handleChange}>
+      <select name={name} disabled={disabled} value={value} onChange={onChange}>
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}

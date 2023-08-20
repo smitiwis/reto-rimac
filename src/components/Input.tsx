@@ -3,10 +3,11 @@ import { ChangeEvent, FC } from "react";
 interface Props {
   placeholder?: string;
   className?: string;
-  value: any;
+  value: string;
   type?: string;
+  name?: string;
   disabled?: boolean;
-  onChange: (value: string) => void;
+  onChange: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
 
 const Input: FC<Props> = ({
@@ -14,21 +15,20 @@ const Input: FC<Props> = ({
   className,
   value,
   type = "text",
+  name,
   disabled = false,
   onChange,
 }) => {
-  const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    onChange(target.value);
-  };
 
   return (
     <input
       disabled={disabled}
       type={type}
+      name={name}
       placeholder={placeholder}
       className={`rimac-input ${className}`}
       value={value}
-      onChange={handleChange}
+      onChange={onChange}
     />
   );
 };
