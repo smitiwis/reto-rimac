@@ -1,4 +1,3 @@
-import React from "react";
 import { Container } from "../components/Layouts/Container";
 import { Text } from "../components/Text";
 import Button from "../components/Button";
@@ -15,10 +14,9 @@ export const ThankPage = () => {
     <div>
       <img className="w-100" src="/images/img_thank.jpg" alt="imagen gracias" />
       <Container>
-        <p className="text-parrafo my-0 fw-black ">
+        <p className="text-parrafo text-center my-0 fw-black ">
           <span className="c-gray">Mensualidad: </span>
           <span className="c-success"> {formatCurrency(amount, "$", 2)}</span>
-         
         </p>
         <h1 className="text-title text-title-h1 c-primary mt-6">
           ¡Te damos la bienvenida!{" "}

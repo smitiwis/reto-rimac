@@ -73,28 +73,30 @@ export const BuildPlanPage = () => {
       stateSureRimac.sureAmount < stateSureRimac.max
         ? stateSureRimac.sureAmount + summation
         : stateSureRimac.sureAmount;
+
     let benefitCurrent = [...stateSureRimac.benefits];
+
     if (
       currentAmount > sureAmountToMaxChoque &&
-      stateSureRimac.benefits.length == 3
+      stateSureRimac.benefits.length === 3
     ) {
       benefitCurrent = stateSureRimac.benefits.filter((benefit) => {
         if (benefit.id === idBenefitChoque) {
-          setBenefitDelete({ ...benefit, active: false });
+          setBenefitDelete(benefit);
         }
         return benefit.id !== idBenefitChoque;
       });
     }
 
-    const amountCurrent = sumActivePrices([...benefitCurrent]);
+    const amountTotal = sumActivePrices([...benefitCurrent]);
 
     setStateSureRimac({
       ...stateSureRimac,
       sureAmount: currentAmount,
       benefits: [...benefitCurrent],
-      amount: amountCurrent,
+      amount: amountTotal,
     });
-    updateAmount(amountCurrent);
+    updateAmount(amountTotal);
   };
 
   const decrementSureAmount = () => {
@@ -107,7 +109,7 @@ export const BuildPlanPage = () => {
 
     if (
       currentAmount <= sureAmountToMaxChoque &&
-      stateSureRimac.benefits.length == 2
+      stateSureRimac.benefits.length === 2
     ) {
       const benefitDeleteIndex = BENEFITS.findIndex((benefit) => {
         return benefit.id === idBenefitChoque;
@@ -122,11 +124,16 @@ export const BuildPlanPage = () => {
       }
     }
 
+    const amountTotal = sumActivePrices([...benefitCurrent]);
+
     setStateSureRimac({
       ...stateSureRimac,
       sureAmount: currentAmount,
+      amount: amountTotal,
       benefits: [...benefitCurrent],
     });
+
+    updateAmount(amountTotal);
   };
 
   useEffect(() => {
