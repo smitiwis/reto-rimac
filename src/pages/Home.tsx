@@ -8,6 +8,7 @@ import Button from "../components/Button";
 import { documents } from "../constants";
 import { useNavigate } from "react-router";
 import { useForm } from "../hooks/UseForm";
+import { faker } from '@faker-js/faker';
 
 export const HomePage = () => {
   const {
@@ -19,6 +20,8 @@ export const HomePage = () => {
     touched,
   } = useForm();
   const navigate = useNavigate();
+
+  console.log("nombre: ", faker.person.firstName())
 
   return (
     <>
