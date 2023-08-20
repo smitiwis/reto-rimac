@@ -52,8 +52,16 @@ export const useForm = (): UseFormResult => {
     captureErrors(captureValues);
   };
 
-  const validatePhoneNumber = (phoneNumber: string): boolean => {
-    return /^9\d{8}$/.test(phoneNumber);
+  const validateLength = (value: string, length: number): boolean => {
+    return value.length === length;
+  };
+
+  const validateNumeric = (value: string): boolean => {
+    return /^\d+$/.test(value);
+  };
+
+  const validateRequired = (value: string): boolean => {
+    return value.trim() !== "";
   };
 
   const handleBlur = ({ target }: FocusEvent<HTMLInputElement>) => {
@@ -76,16 +84,20 @@ export const useForm = (): UseFormResult => {
     };
     captureValues = captureValues ? captureValues : formValues;
 
-    if (!captureValues.documentNumber) {
+    if (!validateRequired(captureValues.documentNumber)) {
       newErrors.documentNumber = `El número de documento es requerido.`;
-    } else if (captureValues.documentNumber.length !== 8) {
+    } else if (!validateNumeric(captureValues.documentNumber)) {
+      newErrors.documentNumber = `El número de documento debe ser numérico.`;
+    } else if (!validateLength(captureValues.documentNumber, 8)) {
       newErrors.documentNumber = `El número de documento debe tener 8 caracteres.`;
     }
 
-    if (!captureValues.phone) {
+    if (!validateRequired(captureValues.phone)) {
       newErrors.phone = `El número de celular es requerido.`;
-    } else if (!validatePhoneNumber(captureValues.phone)) {
-      newErrors.phone = `Debe empezar con 9 y tener 9 dígitos.`;
+    } else if (!validateNumeric(captureValues.phone)) {
+      newErrors.phone = `El número de celular debe ser numérico.`;
+    } else if (!validateLength(captureValues.phone, 9)) {
+      newErrors.phone = `El número de celular debe tener 9 caracteres.`;
     }
 
     if (!captureValues.plateMumber) {
@@ -120,7 +132,7 @@ export const useForm = (): UseFormResult => {
     validateOnSubmit();
 
     if (isFormValid()) {
-      console.log("FORMULARIO VALIDO")
+      console.log("FORMULARIO VALIDO");
     }
   };
 

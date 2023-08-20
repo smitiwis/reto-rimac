@@ -28,7 +28,7 @@ const Input: FC<Props> = ({
 }) => {
   
   return (
-    <div className={`${className}`}>
+    <div className={`${className} p-relative`}>
       <input
         disabled={disabled}
         type={type}
@@ -38,6 +38,7 @@ const Input: FC<Props> = ({
         value={value}
         onChange={onChange}
         onBlur={onBlur}
+        inputMode="text" 
         pattern="^\S+$"
       />
       {touched && error ? (
