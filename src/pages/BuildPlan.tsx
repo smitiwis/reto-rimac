@@ -18,13 +18,14 @@ import Input from "../components/Input";
 import { Switch } from "../components/Switch";
 import Button from "../components/Button";
 import { formatCurrency } from "../helpers/formatCurrency";
-import { useSureContext } from "../contexts/sureAmount/sureProvider";
 import { useEffect, useState } from "react";
 import { BENEFITS } from "../constants";
-import { SureBenefit, SureState } from "../contexts/sureAmount/sureTypes";
+import { SureBenefit, SureState } from "../interfaces";
+import { useAmountContext } from "../contexts/amount/amountContext";
 
 export const BuildPlanPage = () => {
   const navigate = useNavigate();
+  const { updateAmount } = useAmountContext();
   const [stateSureRimac, setStateSureRimac] = useState<SureState>({
     sureAmount: 15800,
     min: 12500,
@@ -49,12 +50,15 @@ export const BuildPlanPage = () => {
       };
     });
 
-    // setBenefits(benefitsCurrent);
+    const amountCurrent = sumActivePrices(benefitsCurrent);
+
     setStateSureRimac({
       ...stateSureRimac,
-      amount: sumActivePrices(benefitsCurrent),
+      amount: amountCurrent,
       benefits: benefitsCurrent,
     });
+
+    updateAmount(amountCurrent);
   };
 
   const sumActivePrices = (benefits: SureBenefit[]): number => {
@@ -82,12 +86,15 @@ export const BuildPlanPage = () => {
       });
     }
 
+    const amountCurrent = sumActivePrices([...benefitCurrent]);
+
     setStateSureRimac({
       ...stateSureRimac,
       sureAmount: currentAmount,
       benefits: [...benefitCurrent],
-      amount: sumActivePrices([...benefitCurrent]),
+      amount: amountCurrent,
     });
+    updateAmount(amountCurrent);
   };
 
   const decrementSureAmount = () => {
@@ -123,10 +130,12 @@ export const BuildPlanPage = () => {
   };
 
   useEffect(() => {
+    const amountCurrent = sumActivePrices(stateSureRimac.benefits);
     setStateSureRimac({
       ...stateSureRimac,
-      amount: sumActivePrices(stateSureRimac.benefits),
+      amount: amountCurrent,
     });
+    updateAmount(amountCurrent);
   }, []);
 
   return (

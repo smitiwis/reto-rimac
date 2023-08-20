@@ -2,12 +2,24 @@ import React from "react";
 import { Container } from "../components/Layouts/Container";
 import { Text } from "../components/Text";
 import Button from "../components/Button";
+import { useAmountContext } from "../contexts/amount/amountContext";
+import { formatCurrency } from "../helpers/formatCurrency";
 
 export const ThankPage = () => {
+  const { amount } = useAmountContext();
+
+  const date = new Date();
+  const currentYear = date.getFullYear();
+
   return (
     <div>
       <img className="w-100" src="/images/img_thank.jpg" alt="imagen gracias" />
       <Container>
+        <p className="text-parrafo my-0 fw-black ">
+          <span className="c-gray">Mensualidad: </span>
+          <span className="c-success"> {formatCurrency(amount, "$", 2)}</span>
+         
+        </p>
         <h1 className="text-title text-title-h1 c-primary mt-6">
           ¡Te damos la bienvenida!{" "}
           <span className="c-gray-title">
@@ -30,7 +42,7 @@ export const ThankPage = () => {
       <footer className="footer-thank mt-5">
         <Container>
           <Text className="fs-xs text-roboto c-gray-neutral">
-            © {"2021"} RIMAC Seguros y Reaseguros.
+            © {currentYear} RIMAC Seguros y Reaseguros.
           </Text>
         </Container>
       </footer>

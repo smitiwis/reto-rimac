@@ -16,14 +16,3 @@ export interface SureBenefit {
   active: boolean;
   pathImg: string;
 }
-
-export interface SureContextProps {
-  state: SureState;
-  dispatch: SureDispatch;
-}
-
-export interface SureAction {
-  type: "INCREMENT" | "DECREMENT" | "UPDATE_BENEFIT";
-}
-
-export type SureDispatch = (action: SureAction) => void;
