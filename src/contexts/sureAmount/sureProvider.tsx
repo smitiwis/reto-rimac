@@ -3,7 +3,7 @@
 import { FC, ReactNode, createContext, useContext, useReducer } from "react";
 import { SureContextProps, SureState } from "./sureTypes";
 import { counterReducer } from "./sureReducer";
-import { benefits } from "../../constants";
+import { BENEFITS } from "../../constants";
 
 const SureContext = createContext<SureContextProps | undefined>(
   undefined
@@ -14,7 +14,7 @@ const initialState: SureState = {
   min: 12500,
   max: 16500,
   amount: 20,
-  benefits: benefits,
+  benefits: BENEFITS,
 };
 
 interface Props {

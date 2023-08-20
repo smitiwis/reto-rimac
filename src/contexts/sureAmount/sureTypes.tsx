@@ -23,7 +23,7 @@ export interface SureContextProps {
 }
 
 export interface SureAction {
-  type: "INCREMENT" | "DECREMENT";
+  type: "INCREMENT" | "DECREMENT" | "UPDATE_BENEFIT";
 }
 
 export type SureDispatch = (action: SureAction) => void;

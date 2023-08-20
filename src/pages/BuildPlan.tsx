@@ -19,19 +19,124 @@ import { Switch } from "../components/Switch";
 import Button from "../components/Button";
 import { formatCurrency } from "../helpers/formatCurrency";
 import { useSureContext } from "../contexts/sureAmount/sureProvider";
+import { useEffect, useState } from "react";
+import { BENEFITS } from "../constants";
+import { SureBenefit, SureState } from "../contexts/sureAmount/sureTypes";
 
 export const BuildPlanPage = () => {
   const navigate = useNavigate();
-  const { state, dispatch } = useSureContext();
+  const [stateSureRimac, setStateSureRimac] = useState<SureState>({
+    sureAmount: 15800,
+    min: 12500,
+    max: 16500,
+    amount: 20,
+    benefits: BENEFITS,
+  });
+
+  const [benefitDelete, setBenefitDelete] = useState<SureBenefit>();
+
+  const amountBase = 20;
+  const summation = 100;
+  const sureAmountToMaxChoque = 16000;
+  const idBenefitChoque = "3987fce18a5b4eccac34d3d5b30e2d0d";
+
+  const updateBenefits = (benefiToUpdate: any) => {
+    const benefitsCurrent = stateSureRimac.benefits.map((benefit) => {
+      const { id, active } = benefit;
+      return {
+        ...benefit,
+        active: id === benefiToUpdate.id ? !active : active,
+      };
+    });
+
+    // setBenefits(benefitsCurrent);
+    setStateSureRimac({
+      ...stateSureRimac,
+      amount: sumActivePrices(benefitsCurrent),
+      benefits: benefitsCurrent,
+    });
+  };
+
+  const sumActivePrices = (benefits: SureBenefit[]): number => {
+    return benefits.reduce(
+      (total, benefit) => (benefit.active ? total + benefit.price : total),
+      amountBase
+    );
+  };
+
+  const incrementSureAmount = () => {
+    const currentAmount =
+      stateSureRimac.sureAmount < stateSureRimac.max
+        ? stateSureRimac.sureAmount + summation
+        : stateSureRimac.sureAmount;
+    let benefitCurrent = [...stateSureRimac.benefits];
+    if (
+      currentAmount > sureAmountToMaxChoque &&
+      stateSureRimac.benefits.length == 3
+    ) {
+      benefitCurrent = stateSureRimac.benefits.filter((benefit) => {
+        if (benefit.id === idBenefitChoque) {
+          setBenefitDelete({ ...benefit, active: false });
+        }
+        return benefit.id !== idBenefitChoque;
+      });
+    }
+
+    setStateSureRimac({
+      ...stateSureRimac,
+      sureAmount: currentAmount,
+      benefits: [...benefitCurrent],
+      amount: sumActivePrices([...benefitCurrent]),
+    });
+  };
+
+  const decrementSureAmount = () => {
+    const currentAmount =
+      stateSureRimac.sureAmount > stateSureRimac.min
+        ? stateSureRimac.sureAmount - summation
+        : stateSureRimac.sureAmount;
+
+    let benefitCurrent = [...stateSureRimac.benefits];
+
+    if (
+      currentAmount <= sureAmountToMaxChoque &&
+      stateSureRimac.benefits.length == 2
+    ) {
+      const benefitDeleteIndex = BENEFITS.findIndex((benefit) => {
+        return benefit.id === idBenefitChoque;
+      });
+
+      if (benefitDelete) {
+        benefitCurrent = benefitCurrent
+          .map((benefit, i) =>
+            i === benefitDeleteIndex ? [benefitDelete, benefit] : benefit
+          )
+          .flat();
+      }
+    }
+
+    setStateSureRimac({
+      ...stateSureRimac,
+      sureAmount: currentAmount,
+      benefits: [...benefitCurrent],
+    });
+  };
+
+  useEffect(() => {
+    setStateSureRimac({
+      ...stateSureRimac,
+      amount: sumActivePrices(stateSureRimac.benefits),
+    });
+  }, []);
 
   return (
     <>
       <Stepper text="PASO 2 DE 2" />
-      <div className="py-7 bg-gris">
+      <div className="py-6 bg-gris">
         <Container>
           <Title type="h1" text="Mira las coberturas" />
           <Text
-            className="c-gray-text mt-2 mb-5"
+            className="c-gray-text mt-2 mb-4"
             text="Conoce las coberturas para tu plan"
           />
           <CardMain className="d-flex align-items-center">
@@ -59,18 +164,18 @@ export const BuildPlanPage = () => {
           <div className="d-flex align-items-center gap-3">
             <Text
               className="text-title-h6 c-gray-text my-0"
-              text={`MIN: ${formatCurrency(state.min, "$")}`}
+              text={`MIN: ${formatCurrency(stateSureRimac.min, "$")}`}
             />
             <Separator />
             <Text
               className="text-title-h6 c-gray-text my-0"
-              text={`MAX: ${formatCurrency(state.max, "$")}`}
+              text={`MAX: ${formatCurrency(stateSureRimac.max, "$")}`}
             />
           </div>
-          <div className="input-dinamic mt-4">
+          <div className="input-dinamic mt-3">
             <div
               className="input-dinamic__remove"
-              onClick={() => dispatch({ type: "DECREMENT" })}
+              onClick={decrementSureAmount}
             >
               <img src="/images/icon-remove.jpg" alt="" />
             </div>
@@ -80,18 +185,15 @@ export const BuildPlanPage = () => {
               placeholder="Placa"
               className="text-center w-100"
               onChange={() => {}}
-              value={`${formatCurrency(state.sureAmount, "$")}`}
+              value={`${formatCurrency(stateSureRimac.sureAmount, "$")}`}
             />
 
-            <div
-              className="input-dinamic__add"
-              onClick={() => dispatch({ type: "INCREMENT" })}
-            >
+            <div className="input-dinamic__add" onClick={incrementSureAmount}>
               <img src="/images/icon-add.jpg" alt="" />
             </div>
           </div>
 
-          <Title className="mt-5" type="h3" text="Agrega o quita coberturas" />
+          <Title className="mt-4" type="h3" text="Agrega o quita coberturas" />
         </Container>
         <Tabs className="tab-main mt-2">
           <TabList>
@@ -101,8 +203,7 @@ export const BuildPlanPage = () => {
           </TabList>
           <Container>
             <TabPanel className="py-4">
-              {/* CONVERTIR A COMPONENTE */}
-              {state.benefits.map((benefit) => {
+              {stateSureRimac.benefits.map((benefit) => {
                 return (
                   <div
                     key={benefit.id}
@@ -120,7 +221,9 @@ export const BuildPlanPage = () => {
                         />
                         <Switch
                           isChecked={benefit.active}
-                          onChange={() => {}}
+                          onChange={(e) => {
+                            updateBenefits(benefit);
+                          }}
                         />
                       </div>
                       {benefit.showDesc && (
@@ -161,9 +264,13 @@ export const BuildPlanPage = () => {
           </Container>
         </Tabs>
 
-        <div className="box-buy mt-7">
+        <Container className="box-buy mt-6">
           <div>
-            <Title className="my-0" type="h2" text="$35.00" />
+            <Title
+              className="my-0"
+              type="h2"
+              text={formatCurrency(stateSureRimac.amount, "$", 2)}
+            />
             <span className="fs-xxs c-gray-title fw-black">MENSUAL</span>
           </div>
           <div>
@@ -176,7 +283,7 @@ export const BuildPlanPage = () => {
               }}
             />
           </div>
-        </div>
+        </Container>
       </div>
     </>
   );
