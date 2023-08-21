@@ -27,7 +27,7 @@ import { useUserDataContext } from "../contexts/userData/userDataContext";
 export const BuildPlanPage = () => {
   const navigate = useNavigate();
   const { updateAmount } = useAmountContext();
-  const { formHome } = useUserDataContext();
+  const { formHome, user } = useUserDataContext();
 
   const [stateSureRimac, setStateSureRimac] = useState<SureState>({
     sureAmount: 15800,
@@ -162,9 +162,9 @@ export const BuildPlanPage = () => {
       <div className="py-6 bg-gris">
         <Container>
           <Title type="h1" text="Mira las coberturas" />
-          {/* <h1 className="text-title text-title-h1">
-            ¡Hola <span className="c-primary">{faker.person.firstName()}!</span>
-          </h1> */}
+          <h1 className="text-title text-title-h1">
+            ¡Hola <span className="c-primary">{user.name}!</span>
+          </h1>
           <Text
             className="c-gray-text mt-2 mb-4"
             text="Conoce las coberturas para tu plan"

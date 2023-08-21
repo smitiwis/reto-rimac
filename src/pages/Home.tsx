@@ -63,7 +63,7 @@ export const HomePage = () => {
           />
           <Input
             className="flex-grow-1"
-            placeholder="Número de placa"
+            placeholder="Placa"
             name="plateMumber"
             value={formValues.plateMumber}
             error={errors.plateMumber}
@@ -92,7 +92,7 @@ export const HomePage = () => {
 
           <Button
             type="submit"
-            className="mt-2"
+            className="mt-2 mb-4"
             text="COTÍZALO"
             onClick={() => {
               // navigate("/arma-plan");

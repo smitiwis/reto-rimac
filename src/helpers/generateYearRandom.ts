@@ -1,6 +1,6 @@
 export const getYearRandom = () => {
 
-  const yearInit = 1900;
+  const yearInit = 1960;
   const yearEnd = 2023;
   
   const rangeYears = yearEnd - yearInit + 1;
