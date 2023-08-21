@@ -1,10 +1,30 @@
-.banner-main{
-    position: relative;
-    padding: 2.5rem 0;
-    
-    &__image{
-        position: absolute;
-        right: 0;
-        top: 0;
+.banner-main {
+  position: relative;
+  padding: 2.5rem 2rem;
+
+  &__image {
+    position: absolute;
+    right: 0;
+    top: 40px;
+  }
+
+  @include media-breakpoint-up(md) {
+    padding: 25.5% 0 0 20%;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    background-image: url("../../../public/images/bg-desk.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    &__description {
+      margin-top: 1.5rem;
     }
+
+    &__image {
+      position: relative;
+    }
+  }
 }

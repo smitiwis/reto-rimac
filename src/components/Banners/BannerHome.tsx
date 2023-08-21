@@ -2,8 +2,8 @@ import React from "react";
 
 export const BannerHome = () => {
   return (
-    <div className="banner-main bg-gris">
-      <div className="container">
+    <div className="banner-main bg-gris" >
+      <div className="banner-main__description">
         <span className="fs-xxs c-gray-title fw-black">¡NUEVO!</span>
         <h1 className="text-title text-title-h1">
           Seguro vehicular <br />
@@ -12,9 +12,12 @@ export const BannerHome = () => {
         <p className="text-parrafo font-roboto">
           Cuentanos donde le haras <br /> seguimiento a tu seguro
         </p>
-        <div className="banner-main__image">
-          <img src="/images/img_mobile.png" alt="img" />
-        </div>
+      </div>
+      <div className="banner-main__image">
+        <picture>
+          <source media="(max-width: 992px)" srcSet="/images/img-mobile.png" />
+          <img src="/images/img-desktop.png" alt="Imagen cambiante" />
+        </picture>
       </div>
     </div>
   );
