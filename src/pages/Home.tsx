@@ -55,7 +55,6 @@ export const HomePage = () => {
             className="flex-grow-1 mb-3"
             placeholder="Celular"
             name="phone"
-            type="number"
             value={formValues.phone}
             error={errors.phone}
             touched={touched.phone}

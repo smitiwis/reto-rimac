@@ -4,6 +4,7 @@ import { FormErrors, FormValues } from "../interfaces";
 interface Props {
   placeholder?: string;
   className?: string;
+  align?: "left" | "center" | "rigth";
   value: string;
   type?: string;
   name?: string;
@@ -16,6 +17,7 @@ interface Props {
 
 const Input: FC<Props> = ({
   placeholder,
+  align,
   className,
   value,
   type = "text",
@@ -26,7 +28,6 @@ const Input: FC<Props> = ({
   onChange,
   onBlur,
 }) => {
-  
   return (
     <div className={`${className} p-relative`}>
       <input
@@ -34,11 +35,11 @@ const Input: FC<Props> = ({
         type={type}
         name={name}
         placeholder={placeholder}
-        className={`rimac-input w-100`}
+        className={`rimac-input w-100 ${align ? "text-" + align : ""}`}
         value={value}
         onChange={onChange}
         onBlur={onBlur}
-        inputMode="text" 
+        inputMode="text"
         pattern="^\S+$"
       />
       {touched && error ? (

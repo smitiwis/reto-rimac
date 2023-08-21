@@ -3,6 +3,7 @@ import { Text } from "../components/Text";
 import Button from "../components/Button";
 import { useAmountContext } from "../contexts/amount/amountContext";
 import { formatCurrency } from "../helpers/formatCurrency";
+import { faker } from "@faker-js/faker"
 
 export const ThankPage = () => {
   const { amount } = useAmountContext();
@@ -27,7 +28,7 @@ export const ThankPage = () => {
 
         <Text className="c-gray-text text-roboto fs-md fw-light mt-2 mb-5">
           Enviaremos la confirmación de compra de tu Plan Vehícular Tracking a
-          tu correo: <span className="fw-normal">joel.sanchez@gmail.com</span>
+          tu correo: <span className="fw-normal">{faker.internet.email()}</span>
         </Text>
 
         <Button

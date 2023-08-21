@@ -3,10 +3,12 @@ import { FormErrors, FormValues, UseFormResult } from "../interfaces";
 import { documents } from "../constants";
 import { useFormHomeContext } from "../contexts/formHome/formHomeContext";
 import { useNavigate } from "react-router";
+import axios from "axios";
 
 export const useForm = (): UseFormResult => {
   const { updateFormHome } = useFormHomeContext();
   const navigate = useNavigate();
+  const [isValidForm, setIsValidForm] = useState(false);
   const [formValues, setFormValues] = useState<FormValues>({
     document: documents[0].value,
     documentNumber: "",
@@ -30,8 +32,6 @@ export const useForm = (): UseFormResult => {
     plateMumber: false,
     acceptTerms: false,
   });
-
-  const [isValidForm, setIsValidForm] = useState(false);
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -68,6 +68,10 @@ export const useForm = (): UseFormResult => {
     return value.trim() !== "";
   };
 
+  const validatePhone = (value: string): boolean => {
+    return /^9/.test(value);
+  };
+
   const handleBlur = ({ target }: FocusEvent<HTMLInputElement>) => {
     const updateTouched = {
       ...touched,
@@ -98,6 +102,8 @@ export const useForm = (): UseFormResult => {
 
     if (!validateRequired(captureValues.phone)) {
       newErrors.phone = `El número de celular es requerido.`;
+    } else if (!validatePhone(captureValues.phone)) {
+      newErrors.phone = `El número de celular debe empezar con 9.`;
     } else if (!validateNumeric(captureValues.phone)) {
       newErrors.phone = `El número de celular debe ser numérico.`;
     } else if (!validateLength(captureValues.phone, 9)) {
@@ -113,13 +119,18 @@ export const useForm = (): UseFormResult => {
     }
 
     setErrors(newErrors);
+    setIsValidForm(isFormValid(newErrors));
   };
 
-  const isFormValid = (): boolean => {
-    return Object.values(errors).every((error) => !error);
+  const isFormValid = (newErrors: FormErrors): boolean => {
+    return Object.values(newErrors).every((error) => error === "");
   };
 
-  const validateOnSubmit = () => {
+  const isAllTouched = (): boolean => {
+    return Object.values(touched).every((fiels) => fiels === true);
+  };
+
+  const changeAllTouched = () => {
     setTouched({
       document: true,
       documentNumber: true,
@@ -131,13 +142,22 @@ export const useForm = (): UseFormResult => {
     captureErrors();
   };
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    validateOnSubmit();
 
-    if (isFormValid()) {
-      updateFormHome(formValues);
-      navigate("/arma-plan")
+    if (!isAllTouched()) changeAllTouched();
+    if (isValidForm) {
+      const path = process.env.REACT_APP_API_URL;
+      try {
+        const response = await axios.post(`${path}/posts`, {
+          body: formValues,
+        });
+
+        updateFormHome(response.data.body);
+        navigate("/arma-plan");
+      } catch (error) {
+        console.error("Error:", error);
+      }
     }
   };
 

@@ -19,11 +19,10 @@ import { Switch } from "../components/Switch";
 import Button from "../components/Button";
 import { formatCurrency } from "../helpers/formatCurrency";
 import { useEffect, useState } from "react";
-import { BENEFITS } from "../constants";
+import { BENEFITS, modelVehicle } from "../constants";
 import { SureBenefit, SureState } from "../interfaces";
 import { useAmountContext } from "../contexts/amount/amountContext";
 import { useFormHomeContext } from "../contexts/formHome/formHomeContext";
-import { faker } from '@faker-js/faker';
 
 export const BuildPlanPage = () => {
   const navigate = useNavigate();
@@ -39,6 +38,7 @@ export const BuildPlanPage = () => {
   });
 
   const [benefitDelete, setBenefitDelete] = useState<SureBenefit>();
+  const [vehicle, setVehicle] = useState(modelVehicle);
 
   const amountBase = 20;
   const summation = 100;
@@ -141,14 +141,17 @@ export const BuildPlanPage = () => {
   };
 
   useEffect(() => {
-    const amountCurrent = sumActivePrices(stateSureRimac.benefits);
-    setStateSureRimac({
-      ...stateSureRimac,
-      amount: amountCurrent,
-    });
-    updateAmount(amountCurrent);
-    console.log("formHome: ", formHome)
-    console.log("USER: ", faker.person.firstName())
+    if (Object.keys(formHome).length > 0) {
+      const amountCurrent = sumActivePrices(stateSureRimac.benefits);
+      setStateSureRimac({
+        ...stateSureRimac,
+        amount: amountCurrent,
+      });
+
+      updateAmount(amountCurrent);
+    } else {
+      navigate("/");
+    }
   }, []);
 
   return (
@@ -166,11 +169,12 @@ export const BuildPlanPage = () => {
           />
           <CardMain className="d-flex align-items-center">
             <div className="w-75 pr-5">
-              <Text className="text-info my-0" text="Placa: C2U-114" />
               <Text
-                className="text-title-h4 lato mt-1 mb-0"
-                text="Wolkswagen 2019 Golf"
+                className="text-info my-0"
+                text={`Placa: ${formHome.plateMumber}`}
               />
+              <Text className="text-title-h4 lato mt-1 mb-0" text={vehicle} />
+
               <img
                 className="card-main__image"
                 src="/images/img-welcome.png"
@@ -208,7 +212,8 @@ export const BuildPlanPage = () => {
             <Input
               disabled={true}
               placeholder="Placa"
-              className="text-center w-100"
+              className="w-100"
+              align="center"
               onChange={() => {}}
               value={`${formatCurrency(stateSureRimac.sureAmount, "$")}`}
             />
