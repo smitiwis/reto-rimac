@@ -1,12 +1,13 @@
 import { ChangeEvent, FocusEvent, FormEvent, useEffect, useState } from "react";
 import { FormErrors, FormValues, UseFormResult } from "../interfaces";
 import { documents } from "../constants";
-import { useFormHomeContext } from "../contexts/formHome/formHomeContext";
+import { useUserDataContext } from "../contexts/userData/userDataContext";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import { getDataUser } from "../services";
 
 export const useForm = (): UseFormResult => {
-  const { updateFormHome } = useFormHomeContext();
+  const { formHome, user, updateUserData } = useUserDataContext();
   const navigate = useNavigate();
   const [isValidForm, setIsValidForm] = useState(false);
   const [formValues, setFormValues] = useState<FormValues>({
@@ -147,16 +148,17 @@ export const useForm = (): UseFormResult => {
 
     if (!isAllTouched()) changeAllTouched();
     if (isValidForm) {
-      const path = process.env.REACT_APP_API_URL;
-      try {
-        const response = await axios.post(`${path}/posts`, {
-          body: formValues,
+      const userId = (Math.floor(Math.random() * 10) + 1).toString();
+      const response = await getDataUser(userId);
+      if (response.status === 200) {
+        updateUserData(formValues, response.data);
+        navigate("/armar-plan");
+        console.log("DATA: ", {
+          form: formValues,
+          user: response.data
         });
-
-        updateFormHome(response.data.body);
-        navigate("/arma-plan");
-      } catch (error) {
-        console.error("Error:", error);
+      } else {
+        console.log("Algo salio mal");
       }
     }
   };

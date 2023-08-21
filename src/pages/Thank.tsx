@@ -4,9 +4,11 @@ import Button from "../components/Button";
 import { useAmountContext } from "../contexts/amount/amountContext";
 import { formatCurrency } from "../helpers/formatCurrency";
 import { faker } from "@faker-js/faker"
+import { useUserDataContext } from "../contexts/userData/userDataContext";
 
 export const ThankPage = () => {
   const { amount } = useAmountContext();
+  const { formHome, user } = useUserDataContext();
 
   const date = new Date();
   const currentYear = date.getFullYear();
@@ -28,7 +30,7 @@ export const ThankPage = () => {
 
         <Text className="c-gray-text text-roboto fs-md fw-light mt-2 mb-5">
           Enviaremos la confirmación de compra de tu Plan Vehícular Tracking a
-          tu correo: <span className="fw-normal">{faker.internet.email()}</span>
+          tu correo: <span className="fw-normal">{user.email}</span>
         </Text>
 
         <Button

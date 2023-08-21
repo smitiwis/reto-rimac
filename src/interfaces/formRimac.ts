@@ -7,6 +7,7 @@ export interface FormValues {
   plateMumber: string;
   acceptTerms: boolean;
 }
+
 export interface FormErrors {
   document: string;
   documentNumber: string;

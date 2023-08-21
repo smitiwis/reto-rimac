@@ -22,12 +22,12 @@ import { useEffect, useState } from "react";
 import { BENEFITS, modelVehicle } from "../constants";
 import { SureBenefit, SureState } from "../interfaces";
 import { useAmountContext } from "../contexts/amount/amountContext";
-import { useFormHomeContext } from "../contexts/formHome/formHomeContext";
+import { useUserDataContext } from "../contexts/userData/userDataContext";
 
 export const BuildPlanPage = () => {
   const navigate = useNavigate();
   const { updateAmount } = useAmountContext();
-  const { formHome } = useFormHomeContext();
+  const { formHome } = useUserDataContext();
 
   const [stateSureRimac, setStateSureRimac] = useState<SureState>({
     sureAmount: 15800,
@@ -141,7 +141,9 @@ export const BuildPlanPage = () => {
   };
 
   useEffect(() => {
-    if (Object.keys(formHome).length > 0) {
+    const isCompletedForm = Object.keys(formHome).length > 0;
+
+    if (isCompletedForm) {
       const amountCurrent = sumActivePrices(stateSureRimac.benefits);
       setStateSureRimac({
         ...stateSureRimac,

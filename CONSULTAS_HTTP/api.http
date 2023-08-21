@@ -1,0 +1,17 @@
+### OBTENER DATOS
+GET https://jsonplaceholder.typicode.com/users/1
+Content-Type: application/json
+
+### EDITAR UN RECURSO
+PUT https://jsonplaceholder.typicode.com/posts/1
+
+{
+    "title": "Luis2 Peralta",
+    "body": {
+        "nuevo": "Nuevo Valor 2"
+    },
+    "userId": 1
+}
+
+### ELIMINAR UN RECURSO
+DELETE https://jsonplaceholder.typicode.com/posts/1 
