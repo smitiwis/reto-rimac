@@ -2,17 +2,28 @@
 @each $display,
   $value
     in (
-      block: $display-block,
+      none: $display-none,
+      flex: $display-flex,
       inline: $display-inline,
       inline-block: $display-inline-block,
-      flex: $display-flex,
-      none: $display-none
+      block: $display-block,
     )
 {
   .d-#{$display} {
     display: $value;
   }
+}
 
+@each $display,
+  $value
+    in (
+      none: $display-none,
+      flex: $display-flex,
+      inline: $display-inline,
+      inline-block: $display-inline-block,
+      block: $display-block,
+    )
+{
   @each $breakpoint, $point in $breakpoints {
     @media (min-width: $point) {
       .d-#{$breakpoint}-#{$display} {
@@ -21,6 +32,7 @@
     }
   }
 }
+
 
 // ************ DIRECIONES DEL FLEX ***********
 @each $direction, $value in (row: row, column: column) {
