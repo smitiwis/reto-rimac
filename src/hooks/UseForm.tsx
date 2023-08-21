@@ -1,8 +1,12 @@
 import { ChangeEvent, FocusEvent, FormEvent, useEffect, useState } from "react";
 import { FormErrors, FormValues, UseFormResult } from "../interfaces";
 import { documents } from "../constants";
+import { useFormHomeContext } from "../contexts/formHome/formHomeContext";
+import { useNavigate } from "react-router";
 
 export const useForm = (): UseFormResult => {
+  const { updateFormHome } = useFormHomeContext();
+  const navigate = useNavigate();
   const [formValues, setFormValues] = useState<FormValues>({
     document: documents[0].value,
     documentNumber: "",
@@ -132,7 +136,8 @@ export const useForm = (): UseFormResult => {
     validateOnSubmit();
 
     if (isFormValid()) {
-      console.log("FORMULARIO VALIDO");
+      updateFormHome(formValues);
+      navigate("/arma-plan")
     }
   };
 

@@ -22,10 +22,14 @@ import { useEffect, useState } from "react";
 import { BENEFITS } from "../constants";
 import { SureBenefit, SureState } from "../interfaces";
 import { useAmountContext } from "../contexts/amount/amountContext";
+import { useFormHomeContext } from "../contexts/formHome/formHomeContext";
+import { faker } from '@faker-js/faker';
 
 export const BuildPlanPage = () => {
   const navigate = useNavigate();
   const { updateAmount } = useAmountContext();
+  const { formHome } = useFormHomeContext();
+
   const [stateSureRimac, setStateSureRimac] = useState<SureState>({
     sureAmount: 15800,
     min: 12500,
@@ -39,7 +43,7 @@ export const BuildPlanPage = () => {
   const amountBase = 20;
   const summation = 100;
   const sureAmountToMaxChoque = 16000;
-  const idBenefitChoque = "3987fce18a5b4eccac34d3d5b30e2d0d";
+  const idBenefitChoque = BENEFITS[1].id;
 
   const updateBenefits = (benefiToUpdate: any) => {
     const benefitsCurrent = stateSureRimac.benefits.map((benefit) => {
@@ -143,6 +147,8 @@ export const BuildPlanPage = () => {
       amount: amountCurrent,
     });
     updateAmount(amountCurrent);
+    console.log("formHome: ", formHome)
+    console.log("USER: ", faker.person.firstName())
   }, []);
 
   return (
@@ -151,6 +157,9 @@ export const BuildPlanPage = () => {
       <div className="py-6 bg-gris">
         <Container>
           <Title type="h1" text="Mira las coberturas" />
+          {/* <h1 className="text-title text-title-h1">
+            ¡Hola <span className="c-primary">{faker.person.firstName()}!</span>
+          </h1> */}
           <Text
             className="c-gray-text mt-2 mb-4"
             text="Conoce las coberturas para tu plan"
