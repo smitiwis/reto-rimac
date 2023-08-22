@@ -1,13 +1,16 @@
-stages:
-  - deploy
-
-deploy:
-  stage: deploy
+# The Docker image that will be used to build your app
+image: node:18.17.0-buster-slim
+# Functions that should be executed before the build script is run
+before_script:
+  - npm run start:prod
+pages:
   script:
-    - npm install
-    - npm run build
+    - npm run start:prod
   artifacts:
     paths:
-      - build/
-  only:
-    - master
+      # The folder that contains the files to be exposed at the Page URL
+      - public
+  rules:
+    # This ensures that only pushes to the default branch will trigger
+    # a pages deploy
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
