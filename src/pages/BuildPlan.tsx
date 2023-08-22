@@ -11,7 +11,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 import { useUserDataContext } from "../contexts/userData/userDataContext";
 
-import { modelVehicle } from "../constants";
+import { INFO_TABS, modelVehicle } from "../constants";
 import { formatCurrency } from "../helpers/formatCurrency";
 
 import { Stepper } from "../components/Stepper/Stepper";
@@ -19,11 +19,12 @@ import { Title } from "../components/Title";
 import { Text } from "../components/Text";
 import { CardMain } from "../components/Cards/CardMain";
 import { Separator } from "../components/Separator";
-import { Switch } from "../components/Switch";
 import Input from "../components/Input";
-import Button from "../components/Button";
 
 import { useBenefitLogic } from "../hooks/useBenefits";
+import { SureBenefit } from "../interfaces";
+import BenefitItem from "../components/BenefitItem";
+import BuyBox from "../components/BuyBox";
 
 export const BuildPlanPage = () => {
   const { formHome, user } = useUserDataContext();
@@ -139,70 +140,19 @@ export const BuildPlanPage = () => {
                 />
                 <Tabs className="tab-main mt-2">
                   <TabList>
-                    <Tab>PROTEGE TU AUTO</Tab>
-                    <Tab>PROTEGE A LOS QUE TE RODEAN</Tab>
-                    <Tab>MEJORA TU PLAN</Tab>
+                    {INFO_TABS.map((tab) => (
+                      <Tab key={tab}>{tab}</Tab>
+                    ))}
                   </TabList>
                   <TabPanel>
-                    {stateSureRimac.benefits.map((benefit, index) => {
+                    {stateSureRimac.benefits.map((benefit: SureBenefit) => {
                       return (
-                        <div
+                        <BenefitItem
                           key={benefit.id}
-                          className="d-flex py-4"
-                          style={{ borderBottom: "solid 1px #D7DBF5" }}
-                        >
-                          <div className="mr-3">
-                            <img
-                              src={benefit.pathImg}
-                              alt={benefit.nameShort}
-                            />
-                          </div>
-                          <div className="flex-grow-1 ">
-                            <div
-                              className="header-benefit
-                            "
-                            >
-                              <Text
-                                className="text-title-h4 mt-0"
-                                text={benefit.name}
-                              />
-                              <Switch
-                                isChecked={benefit.active}
-                                onChange={(e) => {
-                                  updateBenefits(benefit);
-                                }}
-                              />
-                            </div>
-                            {benefit.showDesc && (
-                              <p className="text-parrafo my-0">
-                                {benefit.description}
-                              </p>
-                            )}
-
-                            {/* CONVERTIR A COMPONENTE */}
-                            <div
-                              className="d-flex align-items-center w-content cursor-pointer"
-                              onClick={() => moreInfo(benefit.id)}
-                            >
-                              <Text
-                                className={`text-info text-info__xs my-2 mr-2 ${
-                                  !benefit.showDesc && "text-info--active"
-                                }`}
-                                text={
-                                  benefit.showDesc ? "VER MENOS" : "VER MÁS"
-                                }
-                              />
-                              <div className="d-flex">
-                                <img
-                                  src={`/images/arrow-${
-                                    benefit.showDesc ? "top" : "bottom"
-                                  }.jpg`}
-                                  alt={benefit.name}
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                          benefit={benefit}
+                          updateBenefits={updateBenefits}
+                          moreInfo={moreInfo}
+                        />
                       );
                     })}
                   </TabPanel>
@@ -220,60 +170,11 @@ export const BuildPlanPage = () => {
         </div>
         <div className="column-two">
           <div className="column-two__content">
-            <div className="box-buy">
-              <div className="box-buy__text">
-                <div className="fs-xs c-gray-title fw-black d-none d-md-block">
-                  MONTO
-                </div>
-                <Title
-                  type="h2"
-                  text={formatCurrency(stateSureRimac.amount, "$", 2)}
-                />
-                <span className="fs-xxs c-gray-title fw-black d-block d-md-none">
-                  MENSUAL
-                </span>
-                <span className="fs-xs c-gray-text fw-black d-none d-md-block">
-                  mensuales
-                </span>
-              </div>
-              <div className="box-buy__coverage">
-                {!isBasicAmount && (
-                  <>
-                    <span className="fs-md c-gray-text fw-black d-none d-md-block">
-                      El precio incluye:
-                    </span>
-                    <ul className="coverage-list">
-                      {stateSureRimac.benefits.map((benefit) => {
-                        const benefitIsSelected = benefit.active;
-                        return (
-                          benefitIsSelected &&
-                          benefit.benefitsIncluded.map((included) => {
-                            return (
-                              <li
-                                key={included}
-                                className="coverage-list__item text-parrafo"
-                              >
-                                {included}
-                              </li>
-                            );
-                          })
-                        );
-                      })}
-                    </ul>
-                  </>
-                )}
-              </div>
-              <div className="box-buy__action">
-                <Button
-                  className="w-100"
-                  size="small"
-                  text="Lo quiero"
-                  onClick={() => {
-                    navigate("/gracias");
-                  }}
-                />
-              </div>
-            </div>
+            <BuyBox
+              stateSureRimac={stateSureRimac}
+              isBasicAmount={isBasicAmount}
+              navigate={navigate}
+            />
           </div>
         </div>
       </div>

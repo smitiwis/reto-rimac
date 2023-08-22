@@ -16,6 +16,12 @@ export const itemsNavBar = [
   },
 ];
 
+export const INFO_TABS = [
+  "ROTEGE TU AUTO",
+  "PROTEGE A LOS QUE TE RODEAN",
+  "MEJORA TU PLAN",
+]
+
 export const documents = [{ label: "DNI", value: "dni" }];
 
 export const BENEFITS = [

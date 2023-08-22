@@ -50,18 +50,14 @@ export const useBenefitLogic = () => {
   };
 
   const incrementSureAmount = () => {
-    const currentAmount =
-      stateSureRimac.sureAmount < stateSureRimac.max
-        ? stateSureRimac.sureAmount + summation
-        : stateSureRimac.sureAmount;
+    const { sureAmount, max, benefits } = stateSureRimac;
+    const mewAmount = sureAmount + summation;
+    const currentAmount = sureAmount < max ? mewAmount : sureAmount;
 
-    let benefitCurrent = [...stateSureRimac.benefits];
+    let benefitCurrent = [...benefits];
 
-    if (
-      currentAmount > sureAmountToMaxChoque &&
-      stateSureRimac.benefits.length === 3
-    ) {
-      benefitCurrent = stateSureRimac.benefits.filter((benefit) => {
+    if (currentAmount > sureAmountToMaxChoque && benefits.length === 3) {
+      benefitCurrent = benefits.filter((benefit) => {
         if (benefit.id === idBenefitChoque) {
           setBenefitDelete(benefit);
         }
@@ -77,21 +73,18 @@ export const useBenefitLogic = () => {
       benefits: [...benefitCurrent],
       amount: amountTotal,
     });
+
     updateAmount(amountTotal);
   };
 
   const decrementSureAmount = () => {
-    const currentAmount =
-      stateSureRimac.sureAmount > stateSureRimac.min
-        ? stateSureRimac.sureAmount - summation
-        : stateSureRimac.sureAmount;
+    const { sureAmount, min, benefits } = stateSureRimac;
+    const mewAmount = sureAmount - summation;
+    const currentAmount = sureAmount > min ? mewAmount : sureAmount;
 
-    let benefitCurrent = [...stateSureRimac.benefits];
+    let benefitCurrent = [...benefits];
 
-    if (
-      currentAmount <= sureAmountToMaxChoque &&
-      stateSureRimac.benefits.length === 2
-    ) {
+    if (currentAmount <= sureAmountToMaxChoque && benefits.length === 2) {
       const benefitDeleteIndex = BENEFITS.findIndex((benefit) => {
         return benefit.id === idBenefitChoque;
       });
