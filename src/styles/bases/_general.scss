@@ -25,5 +25,6 @@ button {
 
 
 main{
-  background-color: $gray;
+  // background-color: $gray;
+  background: linear-gradient(to right, $gray 50%, $white 50%);
 }

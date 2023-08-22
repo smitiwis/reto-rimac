@@ -18,15 +18,15 @@
   }
 
   @media (min-width: map-get($breakpoints, md)) {
-    max-width: 720px;
+    max-width: 900px;
   }
 
   @media (min-width: map-get($breakpoints, lg)) {
-    max-width: 1130px;
+    max-width: 950px;
   }
 
   @media (min-width: map-get($breakpoints, xl)) {
-    max-width: 1130px;
+    max-width: 1230px;
 
     &--profile {
       max-width: 1130px;
@@ -65,7 +65,7 @@
   @include media-breakpoint-up(md) {
     padding-top: 135px;
     padding-left: 28%;
-    background: $gray;
+    // background: $gray;
   }
 }
 
