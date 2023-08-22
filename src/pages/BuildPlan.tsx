@@ -1,14 +1,13 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionItemHeading,
-  AccordionItemButton,
-  AccordionItemPanel,
-} from "react-accessible-accordion";
+// import {
+//   Accordion,
+//   AccordionItem,
+//   AccordionItemHeading,
+//   AccordionItemButton,
+//   AccordionItemPanel,
+// } from "react-accessible-accordion";
 import { useNavigate } from "react-router";
 
-import { Container } from "../components/Layouts/Container";
 import { Stepper } from "../components/Stepper/Stepper";
 import { Title } from "../components/Title";
 import { Text } from "../components/Text";
@@ -39,7 +38,7 @@ export const BuildPlanPage = () => {
   });
 
   const [benefitDelete, setBenefitDelete] = useState<SureBenefit>();
-  const [vehicle, setVehicle] = useState(modelVehicle);
+  const [vehicle, setVehicle] = useState("");
 
   const amountBase = 20;
   const summation = 100;
@@ -159,6 +158,7 @@ export const BuildPlanPage = () => {
   };
 
   useEffect(() => {
+    setVehicle(modelVehicle);
     const isCompletedForm = Object.keys(formHome).length > 0;
 
     if (isCompletedForm) {
@@ -172,7 +172,7 @@ export const BuildPlanPage = () => {
     } else {
       navigate("/");
     }
-  }, []);
+  }, [formHome, navigate, stateSureRimac, updateAmount]);
 
   return (
     <div className="page-build layout-main">
