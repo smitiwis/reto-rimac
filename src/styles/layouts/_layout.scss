@@ -59,7 +59,7 @@
 }
 
 .form-main {
-  padding: $spacing-main 0 $spacing-main;
+  padding: $spacing-main $spacing-main 0;
   background: $white;
 
   @include media-breakpoint-up(md) {
