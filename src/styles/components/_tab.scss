@@ -1,7 +1,7 @@
 // TAB-MAIN
 
 .tab-main {
-  width: calc(100% + 4rem);
+  width: calc(100% + (2 * $spacing-main) );
   position: relative;
   left: -$spacing-main;
 }
