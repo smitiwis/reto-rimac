@@ -35,7 +35,7 @@
 }
 
 .wrapper-main {
-  padding: 0 $spacing-lg;
+  padding: 0 $spacing-main;
 
   @media (min-width: map-get($breakpoints, sm)) {
     padding: 0;
@@ -59,9 +59,8 @@
 }
 
 .form-main {
-  padding: 0 $spacing-lg;
+  padding: $spacing-main 0 $spacing-main;
   background: $white;
-  padding-top: $spacing-lg;
 
   @include media-breakpoint-up(md) {
     padding-top: 135px;
@@ -124,8 +123,8 @@
     gap: 1rem;
     justify-content: space-between;
     border-bottom: solid 1px $gray;
-    padding-bottom: $spacing-lg;
-    margin-top: $spacing-lg;
+    padding-bottom: $spacing-main;
+    margin-top: $spacing-main;
     border-bottom: solid 1px $gray-border;
 
     .input-dinamic {

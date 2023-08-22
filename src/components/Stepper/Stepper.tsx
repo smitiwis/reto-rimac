@@ -18,7 +18,7 @@ export const Stepper: FC<Props> = ({ text }) => {
 
         <div className="step-main step-main--desktop mt-6">
           <Link className="d-flex align-items-center gap-3" to="/inicio">
-            <img src="/images/icon-step-one.png" alt="step one" />
+            <img src="/images/icon-step-1.png" alt="step one" />
             <span className="fs-xs c-gray-neutral fw-black">Datos</span>
           </Link>
           <img
@@ -27,7 +27,7 @@ export const Stepper: FC<Props> = ({ text }) => {
             alt="linea de progreso"
           />
           <Link className="d-flex align-items-center gap-3" to="/armar-plan">
-            <img src="/images/icon-step-two.png" alt="step two" />
+            <img src="/images/icon-step-2.png" alt="step two" />
             <span className="fs-xs c-gray-title fw-black">Arma tu plan</span>
           </Link>
         </div>

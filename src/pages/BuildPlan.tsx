@@ -37,6 +37,8 @@ export const BuildPlanPage = () => {
     benefits: BENEFITS,
   });
 
+  const [isBasicAmount, setIsBasicAmount] = useState(false);
+
   const [benefitDelete, setBenefitDelete] = useState<SureBenefit>();
   const [vehicle, setVehicle] = useState("");
 
@@ -66,10 +68,14 @@ export const BuildPlanPage = () => {
   };
 
   const sumActivePrices = (benefits: SureBenefit[]): number => {
-    return benefits.reduce(
+    const sumeActiveBenefits = benefits.reduce(
       (total, benefit) => (benefit.active ? total + benefit.price : total),
       amountBase
     );
+    console.log("suma: ", sumeActiveBenefits);
+    console.log("BASIC: ", sumeActiveBenefits === amountBase);
+    setIsBasicAmount(sumeActiveBenefits === amountBase);
+    return sumeActiveBenefits;
   };
 
   const incrementSureAmount = () => {
@@ -172,7 +178,7 @@ export const BuildPlanPage = () => {
     } else {
       navigate("/");
     }
-  }, [formHome, navigate, stateSureRimac, updateAmount]);
+  }, []);
 
   return (
     <div className="page-build layout-main">
@@ -344,10 +350,10 @@ export const BuildPlanPage = () => {
                   </TabPanel>
 
                   <TabPanel>
-                    <h2>AA SS 2</h2>
+                    <h2>Conido parte 2</h2>
                   </TabPanel>
                   <TabPanel>
-                    <h2>AA conteSSSnt 3</h2>
+                    <h2>Contenido parte 3</h2>
                   </TabPanel>
                 </Tabs>
               </div>
@@ -373,20 +379,31 @@ export const BuildPlanPage = () => {
                 </span>
               </div>
               <div className="box-buy__coverage">
-                <span className="fs-md c-gray-text fw-black d-none d-md-block">
-                  El precio incluye:
-                </span>
-                <ul className="coverage-list">
-                  <li className="coverage-list__item text-parrafo">
-                    Llanta de repuesto
-                  </li>
-                  <li className="coverage-list__item text-parrafo">
-                    Análisis de motor
-                  </li>
-                  <li className="coverage-list__item text-parrafo">
-                    Aros gratis
-                  </li>
-                </ul>
+                {!isBasicAmount && (
+                  <>
+                    <span className="fs-md c-gray-text fw-black d-none d-md-block">
+                      El precio incluye:
+                    </span>
+                    <ul className="coverage-list">
+                      {stateSureRimac.benefits.map((benefit) => {
+                        const benefitIsSelected = benefit.active;
+                        return (
+                          benefitIsSelected &&
+                          benefit.benefitsIncluded.map((included) => {
+                            return (
+                              <li
+                                key={included}
+                                className="coverage-list__item text-parrafo"
+                              >
+                                {included}
+                              </li>
+                            );
+                          })
+                        );
+                      })}
+                    </ul>
+                  </>
+                )}
               </div>
               <div className="box-buy__action">
                 <Button

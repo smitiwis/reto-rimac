@@ -3,11 +3,11 @@
 .tab-main {
   width: calc(100% + 4rem);
   position: relative;
-  left: -$spacing-lg;
+  left: -$spacing-main;
 }
 
 .react-tabs {
-  padding: 0 $spacing-lg;
+  padding: 0 $spacing-main;
 
   &__tab-list {
     border-bottom: none;
@@ -33,7 +33,7 @@
     }
 
     &-panel--selected {
-      padding: 0 $spacing-lg;
+      padding: 0 $spacing-main;
     }
   }
 }

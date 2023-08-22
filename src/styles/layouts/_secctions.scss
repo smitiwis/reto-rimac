@@ -1,5 +1,5 @@
 .secction-info {
-    padding: 3rem $spacing-lg;
+    padding: 3rem $spacing-main;
 
   @include media-breakpoint-up(md) {
     padding: 0;
@@ -8,7 +8,7 @@
 
 .secction-sumAssured {
   background-color: $white;
-  padding: 2.5rem $spacing-lg;
+  padding: 2.5rem $spacing-main;
 
   @include media-breakpoint-up(md) {
     padding: 0;

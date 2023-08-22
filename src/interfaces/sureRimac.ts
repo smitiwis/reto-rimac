@@ -15,4 +15,5 @@ export interface SureBenefit {
   showDesc: boolean;
   active: boolean;
   pathImg: string;
+  benefitsIncluded: string[]
 }
