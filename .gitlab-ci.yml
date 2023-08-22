@@ -2,10 +2,10 @@
 image: node:18.17.0-buster-slim
 # Functions that should be executed before the build script is run
 before_script:
-  - npm run start:prod
+  - npm run build:prod
 pages:
   script:
-    - npm run start:prod
+    - npm run build:prod
   artifacts:
     paths:
       # The folder that contains the files to be exposed at the Page URL
