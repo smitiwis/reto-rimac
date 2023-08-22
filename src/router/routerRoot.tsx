@@ -9,6 +9,7 @@ import { HomePage } from "../pages/Home";
 import { BuildPlanPage } from "../pages/BuildPlan";
 import { ThankPage } from "../pages/Thank";
 import { Header } from "../components/header/Header";
+import { Container } from "../components/Layouts/Container";
 
 const AppRoutes = () => {
   return (
@@ -23,9 +24,7 @@ const AppRoutes = () => {
           <Route path="*" element={<Navigate to="/inicio" />} />
         </Routes>
       </main>
-      <footer>
-        
-      </footer>
+      <footer></footer>
     </Router>
   );
 };

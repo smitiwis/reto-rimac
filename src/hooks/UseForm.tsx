@@ -12,10 +12,10 @@ export const useForm = (): UseFormResult => {
   const [isValidForm, setIsValidForm] = useState(false);
   const [formValues, setFormValues] = useState<FormValues>({
     document: documents[0].value,
-    documentNumber: "",
-    phone: "",
-    plateMumber: "",
-    acceptTerms: false,
+    documentNumber: "47156085",
+    phone: "964912022",
+    plateMumber: "LUIS-1511",
+    acceptTerms: true,
   });
 
   const [errors, setErrors] = useState<FormErrors>({

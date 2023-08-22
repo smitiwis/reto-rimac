@@ -8,6 +8,10 @@
   font-weight: 400;
   font-size: 1rem;
   color: $gray-title;
+
+  &:disabled {
+    background-color: $white; /* Color de fondo deseado para el input deshabilitado */
+  }
 }
 
 // ***** INPUT PERSONALIZADO *****
@@ -19,6 +23,7 @@
 
 .input-dinamic {
   position: relative;
+  height: fit-content;
 
   &__remove,
   &__add {
@@ -76,7 +81,7 @@
 .rimac-checkbox {
   display: inline-block;
   position: relative;
-  padding-left: 2rem;
+  padding-left: $spacing-lg;
   font-size: 1rem;
   cursor: pointer;
 

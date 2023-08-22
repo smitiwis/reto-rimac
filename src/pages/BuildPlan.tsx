@@ -23,6 +23,7 @@ import { BENEFITS, modelVehicle } from "../constants";
 import { SureBenefit, SureState } from "../interfaces";
 import { useAmountContext } from "../contexts/amount/amountContext";
 import { useUserDataContext } from "../contexts/userData/userDataContext";
+import { Link } from "react-router-dom";
 
 export const BuildPlanPage = () => {
   const navigate = useNavigate();
@@ -157,167 +158,229 @@ export const BuildPlanPage = () => {
   }, []);
 
   return (
-    <>
-      <Stepper text="PASO 2 DE 2" />
-      <div className="py-6 bg-gris">
-        <Container>
-          <Title type="h1" text="Mira las coberturas" />
-          <h1 className="text-title text-title-h1">
-            ¡Hola <span className="c-primary">{user.name}!</span>
-          </h1>
-          <Text
-            className="c-gray-text mt-2 mb-4"
-            text="Conoce las coberturas para tu plan"
-          />
-          <CardMain className="d-flex align-items-center">
-            <div className="w-75 pr-5">
+    <div className="page-build layout-main">
+      <div className="page-build__stepper">
+        <Stepper text="PASO 2 DE 2" />
+      </div>
+      <div className="page-build__wrapper">
+        <div className="column-one">
+          <div className="column-one__content">
+            <section className="secction-info">
+              <Link className="d-block w-content" to="/inicio">
+                <div className="d-none d-md-flex align-items-center gap-3">
+                  <img src="/images/icon-back-red.png" alt="regresar" />
+                  <span className="text-info ">VOLVER</span>
+                </div>
+              </Link>
+              <Title
+                className="d-block d-md-none"
+                type="h1"
+                text="Mira las coberturas"
+              />
+              <h1 className="text-title text-title-h1 mb-1 d-none d-md-block">
+                ¡Hola <span className="c-primary">{user.name}!</span>
+              </h1>
               <Text
-                className="text-info my-0"
-                text={`Placa: ${formHome.plateMumber}`}
+                className="c-gray-text mt-2 mb-5"
+                text="Conoce las coberturas para tu plan"
               />
-              <Text className="text-title-h4 lato mt-1 mb-0" text={vehicle} />
+              <CardMain className="d-flex align-items-center">
+                <div className="w-75 pr-5">
+                  <Text
+                    className="text-info my-0"
+                    text={`Placa: ${formHome.plateMumber}`}
+                  />
+                  <Text
+                    className="text-title-h4 lato mt-1 mb-0"
+                    text={vehicle}
+                  />
 
-              <img
-                className="card-main__image"
-                src="/images/img-welcome.png"
-                alt="welcome"
-              />
-            </div>
-          </CardMain>
-        </Container>
-      </div>
-      <div className="bg-blanco pt-4">
-        <Container>
-          <Text
-            className="text-title-h4 mt-3 mb-2"
-            text="Indica la suma asegurada"
-          />
-          <div className="d-flex align-items-center gap-3">
-            <Text
-              className="text-title-h6 c-gray-text my-0"
-              text={`MIN: ${formatCurrency(stateSureRimac.min, "$")}`}
-            />
-            <Separator />
-            <Text
-              className="text-title-h6 c-gray-text my-0"
-              text={`MAX: ${formatCurrency(stateSureRimac.max, "$")}`}
-            />
-          </div>
-          <div className="input-dinamic mt-3">
-            <div
-              className="input-dinamic__remove"
-              onClick={decrementSureAmount}
-            >
-              <img src="/images/icon-remove.jpg" alt="" />
-            </div>
+                  <img
+                    className="card-main__image"
+                    src="/images/img-welcome.png"
+                    alt="welcome"
+                  />
+                </div>
+              </CardMain>
+            </section>
 
-            <Input
-              disabled={true}
-              placeholder="Placa"
-              className="w-100"
-              align="center"
-              onChange={() => {}}
-              value={`${formatCurrency(stateSureRimac.sureAmount, "$")}`}
-            />
-
-            <div className="input-dinamic__add" onClick={incrementSureAmount}>
-              <img src="/images/icon-add.jpg" alt="" />
-            </div>
-          </div>
-
-          <Title className="mt-4" type="h3" text="Agrega o quita coberturas" />
-        </Container>
-        <Tabs className="tab-main mt-2">
-          <TabList>
-            <Tab>PROTEGE TU AUTO</Tab>
-            <Tab>PROTEGE A LOS QUE TE RODEAN</Tab>
-            <Tab>MEJORA TU PLAN</Tab>
-          </TabList>
-          <Container>
-            <TabPanel className="py-4">
-              {stateSureRimac.benefits.map((benefit) => {
-                return (
-                  <div
-                    key={benefit.id}
-                    className="d-flex py-4"
-                    style={{ borderBottom: "solid 1px #D7DBF5" }}
-                  >
-                    <div className="mr-3">
-                      <img src={benefit.pathImg} alt={benefit.nameShort} />
-                    </div>
-                    <div className="flex-grow-1 ">
-                      <div className="d-flex j-content-between gap-3">
-                        <Text
-                          className="text-title-h4 mt-0"
-                          text={benefit.name}
-                        />
-                        <Switch
-                          isChecked={benefit.active}
-                          onChange={(e) => {
-                            updateBenefits(benefit);
-                          }}
-                        />
-                      </div>
-                      {benefit.showDesc && (
-                        <p className="text-parrafo my-0">
-                          {benefit.description}
-                        </p>
-                      )}
-
-                      {/* CONVERTIR A COMPONENTE */}
-                      <div className="d-flex align-items-center w-content cursor-pointer">
-                        <Text
-                          className={`text-info text-info__xs my-2 mr-2 ${
-                            !benefit.showDesc && "text-info--active"
-                          }`}
-                          text={benefit.showDesc ? "VER MENOS" : "VER MÁS"}
-                        />
-                        <div className="d-flex">
-                          <img
-                            src={`/images/arrow-${
-                              benefit.showDesc ? "top" : "bottom"
-                            }.jpg`}
-                            alt={benefit.name}
-                          />
-                        </div>
-                      </div>
-                    </div>
+            <section className="secction-sumAssured">
+              <div className="sure-sume">
+                <div className="w-100">
+                  <Text
+                    className="text-title-h4 mt-0 mb-2"
+                    text="Indica la suma asegurada"
+                  />
+                  <div className="d-flex align-items-center gap-3">
+                    <Text
+                      className="text-title-h6 c-gray-text my-0"
+                      text={`MIN: ${formatCurrency(stateSureRimac.min, "$")}`}
+                    />
+                    <Separator />
+                    <Text
+                      className="text-title-h6 c-gray-text my-0"
+                      text={`MAX: ${formatCurrency(stateSureRimac.max, "$")}`}
+                    />
                   </div>
-                );
-              })}
-            </TabPanel>
+                </div>
 
-            <TabPanel>
-              <h2>AA SS 2</h2>
-            </TabPanel>
-            <TabPanel>
-              <h2>AA conteSSSnt 3</h2>
-            </TabPanel>
-          </Container>
-        </Tabs>
+                <div className="input-dinamic mt-3">
+                  <div
+                    className="input-dinamic__remove"
+                    onClick={decrementSureAmount}
+                  >
+                    <img src="/images/icon-remove.jpg" alt="" />
+                  </div>
 
-        <Container className="box-buy mt-6">
-          <div>
-            <Title
-              className="my-0"
-              type="h2"
-              text={formatCurrency(stateSureRimac.amount, "$", 2)}
-            />
-            <span className="fs-xxs c-gray-title fw-black">MENSUAL</span>
+                  <Input
+                    disabled={true}
+                    placeholder="Placa"
+                    className="w-100"
+                    align="center"
+                    onChange={() => {}}
+                    value={`${formatCurrency(stateSureRimac.sureAmount, "$")}`}
+                  />
+
+                  <div
+                    className="input-dinamic__add"
+                    onClick={incrementSureAmount}
+                  >
+                    <img src="/images/icon-add.jpg" alt="" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="add-plan">
+                <Title
+                  className="mt-0"
+                  type="h3"
+                  text="Agrega o quita coberturas"
+                />
+                <Tabs className="tab-main mt-2">
+                  <TabList>
+                    <Tab>PROTEGE TU AUTO</Tab>
+                    <Tab>PROTEGE A LOS QUE TE RODEAN</Tab>
+                    <Tab>MEJORA TU PLAN</Tab>
+                  </TabList>
+                  <TabPanel>
+                    {stateSureRimac.benefits.map((benefit) => {
+                      return (
+                        <div
+                          key={benefit.id}
+                          className="d-flex py-4"
+                          style={{ borderBottom: "solid 1px #D7DBF5" }}
+                        >
+                          <div className="mr-3">
+                            <img
+                              src={benefit.pathImg}
+                              alt={benefit.nameShort}
+                            />
+                          </div>
+                          <div className="flex-grow-1 ">
+                            <div className="header-benefit
+                            ">
+                              <Text
+                                className="text-title-h4 mt-0"
+                                text={benefit.name}
+                              />
+                              <Switch
+                                isChecked={benefit.active}
+                                onChange={(e) => {
+                                  updateBenefits(benefit);
+                                }}
+                              />
+                            </div>
+                            {benefit.showDesc && (
+                              <p className="text-parrafo my-0">
+                                {benefit.description}
+                              </p>
+                            )}
+
+                            {/* CONVERTIR A COMPONENTE */}
+                            <div className="d-flex align-items-center w-content cursor-pointer">
+                              <Text
+                                className={`text-info text-info__xs my-2 mr-2 ${
+                                  !benefit.showDesc && "text-info--active"
+                                }`}
+                                text={
+                                  benefit.showDesc ? "VER MENOS" : "VER MÁS"
+                                }
+                              />
+                              <div className="d-flex">
+                                <img
+                                  src={`/images/arrow-${
+                                    benefit.showDesc ? "top" : "bottom"
+                                  }.jpg`}
+                                  alt={benefit.name}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </TabPanel>
+
+                  <TabPanel>
+                    <h2>AA SS 2</h2>
+                  </TabPanel>
+                  <TabPanel>
+                    <h2>AA conteSSSnt 3</h2>
+                  </TabPanel>
+                </Tabs>
+              </div>
+            </section>
           </div>
-          <div>
-            <Button
-              size="small"
-              className="px-7"
-              text="Lo quiero"
-              onClick={() => {
-                navigate("/gracias");
-              }}
-            />
+        </div>
+        <div className="column-two">
+          <div className="column-two__content">
+            <div className="box-buy">
+              <div className="box-buy__text">
+                <div className="fs-xs c-gray-title fw-black d-none d-md-block">
+                  MONTO
+                </div>
+                <Title
+                  type="h2"
+                  text={formatCurrency(stateSureRimac.amount, "$", 2)}
+                />
+                <span className="fs-xxs c-gray-title fw-black d-block d-md-none">
+                  MENSUAL
+                </span>
+                <span className="fs-xs c-gray-text fw-black d-none d-md-block">
+                  mensuales
+                </span>
+              </div>
+              <div className="box-buy__coverage">
+                <span className="fs-md c-gray-text fw-black d-none d-md-block">
+                  El precio incluye:
+                </span>
+                <ul className="coverage-list">
+                  <li className="coverage-list__item text-parrafo">
+                    Llanta de repuesto
+                  </li>
+                  <li className="coverage-list__item text-parrafo">
+                    Análisis de motor
+                  </li>
+                  <li className="coverage-list__item text-parrafo">
+                    Aros gratis
+                  </li>
+                </ul>
+              </div>
+              <div className="box-buy__action">
+                <Button
+                  className="w-100"
+                  size="small"
+                  text="Lo quiero"
+                  onClick={() => {
+                    navigate("/gracias");
+                  }}
+                />
+              </div>
+            </div>
           </div>
-        </Container>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

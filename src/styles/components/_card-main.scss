@@ -1,14 +1,26 @@
 .card-main{
-    min-height: 170px;
+    min-height: 156px;
+    max-width: 385px;
     padding: 1.3rem;
     background-color: $white;
     border-radius: 0.5rem;
     box-shadow: 0 0 10px 0 rgba(163, 171, 204, 0.2);
     position: relative;
-
+    
     &__image{
         position: absolute;
         right: -0.6rem;
         bottom: 0;
+        
+        @include media-breakpoint-up(md) {
+            right: 0.6rem;
+        }
+    }
+    
+    @include media-breakpoint-up(md) {
+        min-height: 173px;
+        border: solid 3px $gray-neutral-border;
+        box-shadow: none;
+        border-radius: 0.6rem;
     }
 }

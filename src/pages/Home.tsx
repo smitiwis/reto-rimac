@@ -23,9 +23,9 @@ export const HomePage = () => {
   return (
     <div className="page-home">
       <BannerHome />
-      <div className="form-main bg-white" >
+      <div className="form-main" >
         <div className="content-form">
-          <Title className="my-4" type="h2" text="Déjanos tus datos" />
+          <Title className="mb-4" type="h2" text="Déjanos tus datos" />
           <form className="d-flex flex-column" onSubmit={handleSubmit}>
             <div className="d-flex mb-3">
               <Select

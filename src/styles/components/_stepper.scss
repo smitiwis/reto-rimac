@@ -1,9 +1,40 @@
+.step-wrapper {
+  border-bottom: solid 1px $gray-neutral-border;
+  background-color: $white;
+  @include media-breakpoint-up(md) {
+    background-color: $gray;
+    border: none;
+  }
+}
+
 .step-main {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  border-top: solid 1px $gray-border;
-  border-bottom: solid 1px $gray-border;
+
+  &--mobile {
+    display: flex;
+    height: 50px;
+  }
+
+  &--desktop {
+    display: none;
+  }
+
+  @include media-breakpoint-up(md) {
+    flex-direction: column;
+    gap: 0rem;
+
+    &--mobile {
+      display: none;
+    }
+
+    &--desktop {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+  }
 }
 
 .barra-end {

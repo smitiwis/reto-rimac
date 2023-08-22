@@ -1,12 +1,15 @@
 import React from "react";
 import { NavBar } from "./NavBar";
+import { Wrapper } from "../Layouts/Wrapper";
 import { Container } from "../Layouts/Container";
 
 export const Header = () => {
   return (
-    <header className="bg-gris">
+    <header className="header-main">
       <Container>
-        <NavBar />
+        <Wrapper>
+          <NavBar />
+        </Wrapper>
       </Container>
     </header>
   );

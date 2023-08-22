@@ -1,14 +1,18 @@
 // TAB-MAIN
 
 .tab-main {
+  width: calc(100% + 4rem);
+  position: relative;
+  left: -$spacing-lg;
 }
 
 .react-tabs {
+  padding: 0 $spacing-lg;
+
   &__tab-list {
     border-bottom: none;
     display: flex;
   }
-
   &__tab {
     padding: 1.2rem 1.6rem;
     text-align: center;
@@ -27,5 +31,18 @@
       color: $c-primary;
       border-bottom: solid 2px $c-primary !important;
     }
+
+    &-panel--selected {
+      padding: 0 $spacing-lg;
+    }
+  }
+}
+
+.header-benefit {
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    max-width: 160px;
   }
 }
