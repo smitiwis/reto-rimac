@@ -24,7 +24,7 @@ export const BENEFITS = [
     benefitsIncluded: [
       "Llanta de repuesto",
       "Análisis de motor",
-      "Aros gratis"
+      "Aros gratis",
     ],
     name: "Llanta robada",
     nameShort: "Llanta robada",
@@ -41,7 +41,7 @@ export const BENEFITS = [
       "Cubrir multa.",
       "Refacción de daños.",
       "Asistencia técnica cubrida.",
-      "Seguro médico."
+      "Seguro médico.",
     ],
     name: "Choque y/o pasarte la luz roja ",
     nameShort: "Choque",
@@ -58,7 +58,7 @@ export const BENEFITS = [
       "Gastos médicos.",
       "Ayuda psicológica.",
       "Abogado gratuito.",
-      "Seguro de vida."
+      "Seguro de vida.",
     ],
     name: "Atropello en la vía Evitamiento",
     nameShort: "Atropello",
@@ -70,6 +70,14 @@ export const BENEFITS = [
     active: false,
   },
 ];
+
+export const INIT_RIMAC = {
+  sureAmount: 15500,
+  min: 12500,
+  max: 16500,
+  amount: 20,
+  benefits: BENEFITS,
+};
 
 const { vehicle } = faker;
 const manufacturer = vehicle.manufacturer();

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 // import {
 //   Accordion,
@@ -6,179 +8,35 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 //   AccordionItemButton,
 //   AccordionItemPanel,
 // } from "react-accessible-accordion";
-import { useNavigate } from "react-router";
+
+import { useUserDataContext } from "../contexts/userData/userDataContext";
+
+import { modelVehicle } from "../constants";
+import { formatCurrency } from "../helpers/formatCurrency";
 
 import { Stepper } from "../components/Stepper/Stepper";
 import { Title } from "../components/Title";
 import { Text } from "../components/Text";
 import { CardMain } from "../components/Cards/CardMain";
 import { Separator } from "../components/Separator";
-import Input from "../components/Input";
 import { Switch } from "../components/Switch";
+import Input from "../components/Input";
 import Button from "../components/Button";
-import { formatCurrency } from "../helpers/formatCurrency";
-import { useEffect, useState } from "react";
-import { BENEFITS, modelVehicle } from "../constants";
-import { SureBenefit, SureState } from "../interfaces";
-import { useAmountContext } from "../contexts/amount/amountContext";
-import { useUserDataContext } from "../contexts/userData/userDataContext";
-import { Link } from "react-router-dom";
+
+import { useBenefitLogic } from "../hooks/useBenefits";
 
 export const BuildPlanPage = () => {
-  const navigate = useNavigate();
-  const { updateAmount } = useAmountContext();
   const { formHome, user } = useUserDataContext();
+  const navigate = useNavigate();
 
-  const [stateSureRimac, setStateSureRimac] = useState<SureState>({
-    sureAmount: 15800,
-    min: 12500,
-    max: 16500,
-    amount: 20,
-    benefits: BENEFITS,
-  });
-
-  const [isBasicAmount, setIsBasicAmount] = useState(false);
-
-  const [benefitDelete, setBenefitDelete] = useState<SureBenefit>();
-  const [vehicle, setVehicle] = useState("");
-
-  const amountBase = 20;
-  const summation = 100;
-  const sureAmountToMaxChoque = 16000;
-  const idBenefitChoque = BENEFITS[1].id;
-
-  const updateBenefits = (benefiToUpdate: any) => {
-    const benefitsCurrent = stateSureRimac.benefits.map((benefit) => {
-      const { id, active } = benefit;
-      return {
-        ...benefit,
-        active: id === benefiToUpdate.id ? !active : active,
-      };
-    });
-
-    const amountCurrent = sumActivePrices(benefitsCurrent);
-
-    setStateSureRimac({
-      ...stateSureRimac,
-      amount: amountCurrent,
-      benefits: benefitsCurrent,
-    });
-
-    updateAmount(amountCurrent);
-  };
-
-  const sumActivePrices = (benefits: SureBenefit[]): number => {
-    const sumeActiveBenefits = benefits.reduce(
-      (total, benefit) => (benefit.active ? total + benefit.price : total),
-      amountBase
-    );
-    console.log("suma: ", sumeActiveBenefits);
-    console.log("BASIC: ", sumeActiveBenefits === amountBase);
-    setIsBasicAmount(sumeActiveBenefits === amountBase);
-    return sumeActiveBenefits;
-  };
-
-  const incrementSureAmount = () => {
-    const currentAmount =
-      stateSureRimac.sureAmount < stateSureRimac.max
-        ? stateSureRimac.sureAmount + summation
-        : stateSureRimac.sureAmount;
-
-    let benefitCurrent = [...stateSureRimac.benefits];
-
-    if (
-      currentAmount > sureAmountToMaxChoque &&
-      stateSureRimac.benefits.length === 3
-    ) {
-      benefitCurrent = stateSureRimac.benefits.filter((benefit) => {
-        if (benefit.id === idBenefitChoque) {
-          setBenefitDelete(benefit);
-        }
-        return benefit.id !== idBenefitChoque;
-      });
-    }
-
-    const amountTotal = sumActivePrices([...benefitCurrent]);
-
-    setStateSureRimac({
-      ...stateSureRimac,
-      sureAmount: currentAmount,
-      benefits: [...benefitCurrent],
-      amount: amountTotal,
-    });
-    updateAmount(amountTotal);
-  };
-
-  const decrementSureAmount = () => {
-    const currentAmount =
-      stateSureRimac.sureAmount > stateSureRimac.min
-        ? stateSureRimac.sureAmount - summation
-        : stateSureRimac.sureAmount;
-
-    let benefitCurrent = [...stateSureRimac.benefits];
-
-    if (
-      currentAmount <= sureAmountToMaxChoque &&
-      stateSureRimac.benefits.length === 2
-    ) {
-      const benefitDeleteIndex = BENEFITS.findIndex((benefit) => {
-        return benefit.id === idBenefitChoque;
-      });
-
-      if (benefitDelete) {
-        benefitCurrent = benefitCurrent
-          .map((benefit, i) =>
-            i === benefitDeleteIndex ? [benefitDelete, benefit] : benefit
-          )
-          .flat();
-      }
-    }
-
-    const amountTotal = sumActivePrices([...benefitCurrent]);
-
-    setStateSureRimac({
-      ...stateSureRimac,
-      sureAmount: currentAmount,
-      amount: amountTotal,
-      benefits: [...benefitCurrent],
-    });
-
-    updateAmount(amountTotal);
-  };
-
-  const moreInfo = (benefitIndex: string) => {
-    const updateBenefits = stateSureRimac.benefits.map(
-      (benefit: SureBenefit) => {
-        const { id, showDesc } = benefit;
-        return {
-          ...benefit,
-          showDesc: id === benefitIndex ? !showDesc : showDesc,
-        };
-      }
-    );
-
-    setStateSureRimac({
-      ...stateSureRimac,
-      benefits: [...updateBenefits],
-    });
-  };
-
-  useEffect(() => {
-    setVehicle(modelVehicle);
-    const isCompletedForm = Object.keys(formHome).length > 0;
-
-    if (isCompletedForm) {
-      const amountCurrent = sumActivePrices(stateSureRimac.benefits);
-      setStateSureRimac({
-        ...stateSureRimac,
-        amount: amountCurrent,
-      });
-
-      updateAmount(amountCurrent);
-    } else {
-      navigate("/");
-    }
-  }, []);
+  const {
+    stateSureRimac,
+    isBasicAmount,
+    updateBenefits,
+    incrementSureAmount,
+    decrementSureAmount,
+    moreInfo,
+  } = useBenefitLogic();
 
   return (
     <div className="page-build layout-main">
@@ -215,7 +73,7 @@ export const BuildPlanPage = () => {
                   />
                   <Text
                     className="text-title-h4 lato mt-1 mb-0"
-                    text={vehicle}
+                    text={modelVehicle}
                   />
 
                   <img
