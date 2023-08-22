@@ -1,4 +1,4 @@
-.header-main{
+.header-main {
   background-color: $white;
   border-bottom: solid 1px $gray-border;
 
@@ -29,7 +29,7 @@
     max-width: 1130px;
 
     &--profile {
-      max-width: 900px;
+      max-width: 1130px;
     }
   }
 }
@@ -54,7 +54,7 @@
     grid-template-columns: minmax(450px, 540px) 1fr;
     grid-template-rows: calc(100vh);
     position: relative;
-    margin-top: -56px;
+    margin-top: -57px;
   }
 }
 
@@ -81,21 +81,7 @@
 // PAGE BUILD PLANE
 .page-build {
   background-color: $gray;
-  // border: solid 1px red;
   display: block;
-
-  &__stepper {
-    // border: solid 1px blue;
-  }
-
-  &__wrapper {
-    // border: solid 1px greenyellow;
-  }
-
-  .column-one {
-  }
-  .column-two {
-  }
 
   @include media-breakpoint-up(md) {
     background-color: $white;
@@ -103,13 +89,11 @@
     grid-template-columns: 220px 1fr;
 
     &__stepper {
-      // border: solid 1px blue;
       background-color: $gray;
     }
 
     &__wrapper {
       width: 100%;
-      // border: solid 1px greenyellow;
       display: grid;
       grid-template-columns: minmax(385px, 2fr) 1fr;
     }
@@ -127,11 +111,7 @@
       }
     }
     .column-two {
-      // border: solid 1px fuchsia;
       padding: 0 1rem;
-
-      &__content {
-      }
     }
   }
 }
@@ -156,8 +136,50 @@
 
 .add-plan {
   margin: 2.5rem 0;
-  
+
   @include media-breakpoint-up(md) {
     margin-bottom: 0;
+  }
+}
+
+// PAGE DE AGRADECIMIENTO
+.page-thank {
+  background-color: $white;
+
+  &__present {
+  }
+
+  &__description {
+  }
+  @include media-breakpoint-up(md) {
+    display: grid;
+    grid-template-columns: minmax(350px, 500px) 1fr;
+    grid-template-rows: calc(100vh - 57px);
+    background-color: $gray;
+    // border: solid 1px red;
+
+    &__present {
+      // border: solid 1px blue;
+      display: flex;
+      align-items: center;
+      padding: 0 2rem;
+      position: relative;
+
+      picture {
+        position: absolute;
+        width: 536px;
+        right: -120px;
+      }
+    }
+
+    &__description {
+      // border: solid 1px green;
+      padding: 105px 0 0 16rem;
+      background-color: $white;
+
+      .wrapper-main {
+        max-width: 490px;
+      }
+    }
   }
 }
