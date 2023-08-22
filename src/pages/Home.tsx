@@ -1,12 +1,10 @@
 import { BannerHome } from "../components/Banners/BannerHome";
-import { Container } from "../components/Layouts/Container";
 import Input from "../components/Input";
 import { Title } from "../components/Title";
 import Select from "../components/Select";
 import Checkbox from "../components/Checkbox";
 import Button from "../components/Button";
 import { documents } from "../constants";
-import { useNavigate } from "react-router";
 import { useForm } from "../hooks/UseForm";
 
 export const HomePage = () => {
@@ -18,7 +16,6 @@ export const HomePage = () => {
     errors,
     touched,
   } = useForm();
-  const navigate = useNavigate();
 
   return (
     <div className="page-home">

@@ -1,5 +1,4 @@
-import { ChangeEvent, FC, FocusEvent, useEffect } from "react";
-import { FormErrors, FormValues } from "../interfaces";
+import { ChangeEvent, FC, FocusEvent } from "react";
 
 interface Props {
   placeholder?: string;

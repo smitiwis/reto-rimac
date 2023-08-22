@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { Container } from "../Layouts/Container";
 import { Wrapper } from "../Layouts/Wrapper";
 
 interface Props {

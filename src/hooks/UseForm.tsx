@@ -1,13 +1,12 @@
-import { ChangeEvent, FocusEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FocusEvent, FormEvent, useState } from "react";
 import { FormErrors, FormValues, UseFormResult } from "../interfaces";
 import { documents } from "../constants";
 import { useUserDataContext } from "../contexts/userData/userDataContext";
 import { useNavigate } from "react-router";
-import axios from "axios";
 import { getDataUser } from "../services";
 
 export const useForm = (): UseFormResult => {
-  const { formHome, user, updateUserData } = useUserDataContext();
+  const { updateUserData } = useUserDataContext();
   const navigate = useNavigate();
   const [isValidForm, setIsValidForm] = useState(false);
   const [formValues, setFormValues] = useState<FormValues>({

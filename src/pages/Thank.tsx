@@ -1,9 +1,7 @@
-import { Container } from "../components/Layouts/Container";
 import { Text } from "../components/Text";
 import Button from "../components/Button";
 import { useAmountContext } from "../contexts/amount/amountContext";
 import { formatCurrency } from "../helpers/formatCurrency";
-import { faker } from "@faker-js/faker";
 import { useUserDataContext } from "../contexts/userData/userDataContext";
 import { Wrapper } from "../components/Layouts/Wrapper";
 import { useEffect } from "react";
@@ -11,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 export const ThankPage = () => {
   const { amount } = useAmountContext();
-  const { formHome, user } = useUserDataContext();
+  const { user } = useUserDataContext();
   const navigate = useNavigate();
 
   const date = new Date();
@@ -21,7 +19,7 @@ export const ThankPage = () => {
     if (!user.email) {
       navigate("/");
     }
-  }, []);
+  });
 
   return (
       <div className="page-thank">

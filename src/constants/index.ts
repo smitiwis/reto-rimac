@@ -57,7 +57,6 @@ export const BENEFITS = [
 const { vehicle } = faker;
 const manufacturer = vehicle.manufacturer();
 const mode = vehicle.vehicle();
-const color = vehicle.color();
 const name = faker.person.firstName();
 
 export const modelVehicle = `${manufacturer} ${getYearRandom()} ${mode}  `;
