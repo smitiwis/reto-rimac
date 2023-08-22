@@ -1,13 +1,9 @@
-stages:
-  - deploy
-
-deploy:
-  stage: deploy
+build:
+  image: node:14.15.3-buster-slim
+  stage: build
   script:
     - npm install
-    - npm run build
+    - npm build
   artifacts:
     paths:
       - build/
-  only:
-    - master
