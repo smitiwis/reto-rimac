@@ -24,7 +24,8 @@
 .input-dinamic {
   position: relative;
   height: fit-content;
-
+  margin-top: 1rem;
+  
   &__remove,
   &__add {
     position: absolute;
@@ -35,13 +36,17 @@
     background-color: transparent;
     border-radius: 50%;
   }
-
+  
   &__remove {
     left: 15px;
   }
-
+  
   &__add {
     right: 15px;
+  }
+  
+  @include media-breakpoint-up(md) {
+    margin-top: 0;
   }
 }
 

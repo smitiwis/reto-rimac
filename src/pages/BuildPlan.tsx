@@ -141,6 +141,23 @@ export const BuildPlanPage = () => {
     updateAmount(amountTotal);
   };
 
+  const moreInfo = (benefitIndex: string) => {
+    const updateBenefits = stateSureRimac.benefits.map(
+      (benefit: SureBenefit) => {
+        const { id, showDesc } = benefit;
+        return {
+          ...benefit,
+          showDesc: id === benefitIndex ? !showDesc : showDesc,
+        };
+      }
+    );
+
+    setStateSureRimac({
+      ...stateSureRimac,
+      benefits: [...updateBenefits],
+    });
+  };
+
   useEffect(() => {
     const isCompletedForm = Object.keys(formHome).length > 0;
 
@@ -224,7 +241,7 @@ export const BuildPlanPage = () => {
                   </div>
                 </div>
 
-                <div className="input-dinamic mt-3">
+                <div className="input-dinamic">
                   <div
                     className="input-dinamic__remove"
                     onClick={decrementSureAmount}
@@ -263,7 +280,7 @@ export const BuildPlanPage = () => {
                     <Tab>MEJORA TU PLAN</Tab>
                   </TabList>
                   <TabPanel>
-                    {stateSureRimac.benefits.map((benefit) => {
+                    {stateSureRimac.benefits.map((benefit, index) => {
                       return (
                         <div
                           key={benefit.id}
@@ -277,8 +294,10 @@ export const BuildPlanPage = () => {
                             />
                           </div>
                           <div className="flex-grow-1 ">
-                            <div className="header-benefit
-                            ">
+                            <div
+                              className="header-benefit
+                            "
+                            >
                               <Text
                                 className="text-title-h4 mt-0"
                                 text={benefit.name}
@@ -297,7 +316,10 @@ export const BuildPlanPage = () => {
                             )}
 
                             {/* CONVERTIR A COMPONENTE */}
-                            <div className="d-flex align-items-center w-content cursor-pointer">
+                            <div
+                              className="d-flex align-items-center w-content cursor-pointer"
+                              onClick={() => moreInfo(benefit.id)}
+                            >
                               <Text
                                 className={`text-info text-info__xs my-2 mr-2 ${
                                   !benefit.showDesc && "text-info--active"
