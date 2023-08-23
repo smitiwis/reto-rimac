@@ -1,8 +1,12 @@
 .text-call {
   font-weight: 400;
-  font-size: 0.875rem;
+  font-size: $font-size-sm;
   line-height: 1.5rem;
   color: $c-secondary;
+
+  &--small{
+    font-size: $font-size-xs;
+  }
 }
 
 .text-title {

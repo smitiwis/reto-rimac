@@ -1,0 +1,18 @@
+.header-accordion {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &__arrow {
+    position: absolute;
+    right: 0;
+    top: 10px;
+  }
+}
+
+.accordion {
+  &__item {
+    padding: 1rem 0;
+    border-bottom: solid 1px #d7dbf5;
+  }
+}
