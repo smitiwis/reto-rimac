@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/reto-rimac/static/css/main.e01fc306.css",
+    "main.js": "/reto-rimac/static/js/main.3c601b41.js",
+    "static/js/787.5e46c4fd.chunk.js": "/reto-rimac/static/js/787.5e46c4fd.chunk.js",
+    "static/media/bg-desk.png": "/reto-rimac/static/media/bg-desk.e4442bf734e45a022eff.png",
+    "index.html": "/reto-rimac/index.html",
+    "main.e01fc306.css.map": "/reto-rimac/static/css/main.e01fc306.css.map",
+    "main.3c601b41.js.map": "/reto-rimac/static/js/main.3c601b41.js.map",
+    "787.5e46c4fd.chunk.js.map": "/reto-rimac/static/js/787.5e46c4fd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e01fc306.css",
+    "static/js/main.3c601b41.js"
+  ]
+}
