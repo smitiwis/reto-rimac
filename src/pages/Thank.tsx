@@ -27,11 +27,11 @@ export const ThankPage = () => {
           <picture className="d-block w-100">
             <source
               media="(max-width: 992px)"
-              srcSet="/images/img-thank-mobile.jpg"
+              srcSet={`${process.env.PUBLIC_URL}/images/img-thank-mobile.jpg`}
             />
             <img
               className="w-100"
-              src="/images/img-thank-desktop.png"
+              src={`${process.env.PUBLIC_URL}/images/img-thank-desktop.png`}
               alt="Imagen gracias"
             />
           </picture>

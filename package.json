@@ -23,6 +23,7 @@
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
+  "homepage": "https://smitiwis.github.io/reto-rimac",
   "scripts": {
     "start": "cp ./environments/.env.dev .env && react-scripts start",
     "start:dev": "cp ./environments/.env.dev .env && react-scripts start",

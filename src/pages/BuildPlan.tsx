@@ -51,7 +51,7 @@ export const BuildPlanPage = () => {
             <section className="secction-info">
               <Link className="d-block w-content" to="/inicio">
                 <div className="d-none d-md-flex align-items-center gap-3">
-                  <img src="/images/icon-back-red.png" alt="regresar" />
+                  <img src={`${process.env.PUBLIC_URL}/images/icon-back-red.png`} alt="regresar" />
                   <span className="text-info ">VOLVER</span>
                 </div>
               </Link>
@@ -80,7 +80,7 @@ export const BuildPlanPage = () => {
 
                   <img
                     className="card-main__image"
-                    src="/images/img-welcome.png"
+                    src={`${process.env.PUBLIC_URL}/images/img-welcome.png`}
                     alt="welcome"
                   />
                 </div>
@@ -112,7 +112,7 @@ export const BuildPlanPage = () => {
                     className="input-dinamic__remove"
                     onClick={decrementSureAmount}
                   >
-                    <img src="/images/icon-remove.jpg" alt="" />
+                    <img src={`${process.env.PUBLIC_URL}/images/icon-remove.jpg`} alt="" />
                   </div>
 
                   <Input
@@ -128,7 +128,7 @@ export const BuildPlanPage = () => {
                     className="input-dinamic__add"
                     onClick={incrementSureAmount}
                   >
-                    <img src="/images/icon-add.jpg" alt="" />
+                    <img src={`${process.env.PUBLIC_URL}/images/icon-add.jpg`} alt="" />
                   </div>
                 </div>
               </div>

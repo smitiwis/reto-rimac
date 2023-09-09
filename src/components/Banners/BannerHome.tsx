@@ -15,8 +15,8 @@ export const BannerHome = () => {
       </div>
       <div className="banner-main__image">
         <picture>
-          <source media="(max-width: 992px)" srcSet="/images/img-mobile.png" />
-          <img src="/images/img-desktop.png" alt="Imagen cambiante" />
+          <source media="(max-width: 992px)" srcSet={`${process.env.PUBLIC_URL}/images/img-mobile.png`} />
+          <img src={`${process.env.PUBLIC_URL}/images/img-desktop.png`} alt="Imagen cambiante" />
         </picture>
       </div>
     </div>

@@ -8,7 +8,7 @@ export const NavBar = () => {
           <Link className="nav-list__link" to={"/inicio"}>
             <img
               className="nav-list__image mr-1"
-              src="/images/logo-rimac.jpg"
+              src={`${process.env.PUBLIC_URL}/images/logo-rimac.jpg`}
               alt="logo rimac"
             />
           </Link>
@@ -18,7 +18,7 @@ export const NavBar = () => {
             <span className="d-none d-md-block mr-3 rimac-checkbox__label">¿Tienes alguna duda?</span>
             <img
               className="nav-list__image mr-1"
-              src="/images/icon-phone.jpg"
+              src={`${process.env.PUBLIC_URL}/images/icon-phone.jpg`}
               alt="icon-phone"
             />
             <span className="text-call d-block d-md-none">Llámanos</span>

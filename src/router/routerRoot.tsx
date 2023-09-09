@@ -12,7 +12,7 @@ import { Header } from "../components/header/Header";
 
 const AppRoutes = () => {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Header />
       <main>
         <Routes>
@@ -20,7 +20,8 @@ const AppRoutes = () => {
           <Route path="/inicio" element={<HomePage />} />
           <Route path="/armar-plan" element={<BuildPlanPage />} />
           <Route path="/gracias" element={<ThankPage />} />
-          <Route path="*" element={<Navigate to="/inicio" />} />
+
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>
       <footer></footer>
