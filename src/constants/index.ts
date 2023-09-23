@@ -3,13 +3,13 @@ import { getYearRandom } from "../helpers/generateYearRandom";
 
 export const itemsNavBar = [
   {
-    image: "/images/logo-rimac.jpg",
+    image: `${process.env.PUBLIC_URL}/images/logo-rimac.jpg`,
     name: "logo rimac",
     text: "",
     goToPage: "/inicio",
   },
   {
-    image: "/images/icon-phone.jpg",
+    image: `${process.env.PUBLIC_URL}/images/icon-phone.jpg`,
     name: "logo rimac",
     text: "Llámanos",
     goToPage: "",
@@ -34,7 +34,7 @@ export const BENEFITS = [
     ],
     name: "Llanta robada",
     nameShort: "Llanta robada",
-    pathImg: "/images/img-tireMiss.jpg",
+    pathImg: `${process.env.PUBLIC_URL}/images/img-tireMiss.jpg`,
     description:
       "He salido de casa a las cuatro menos cinco para ir a la academia de ingles de mi pueblo (Sant Cugat, al lado de Barcelona) con mi bici, na llego a la academia que está en el centro del pueblo en una plaza medio-grande y dejo donde siempre la bici atada con una pitón a un sitio de esos de poner las bicis y mucho más",
     price: 15,
@@ -51,7 +51,7 @@ export const BENEFITS = [
     ],
     name: "Choque y/o pasarte la luz roja ",
     nameShort: "Choque",
-    pathImg: "/images/img-choque.jpg",
+    pathImg: `${process.env.PUBLIC_URL}/images/img-choque.jpg`,
     description:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora doloribus necessitatibus mollitia consectetur, earum consequuntur dignissimos autem at sequi sunt quasi quam",
     price: 20,
@@ -68,7 +68,7 @@ export const BENEFITS = [
     ],
     name: "Atropello en la vía Evitamiento",
     nameShort: "Atropello",
-    pathImg: "/images/img-runOver.jpg",
+    pathImg: `${process.env.PUBLIC_URL}/images/img-runOver.jpg`,
     description:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora doloribus necessitatibus mollitia consectetur, earum consequuntur dignissimos autem at sequi sunt quasi quam",
     price: 50,

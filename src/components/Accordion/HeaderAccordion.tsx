@@ -30,7 +30,7 @@ const HeaderAccordion: FC<BenefitAccordionProps> = ({
           onClick={handleAccordionClick}
         >
           <img
-            src={`/images/icon-border-${active ? "remove" : "add"}.jpg`}
+            src={`${process.env.PUBLIC_URL}/images/icon-border-${active ? "remove" : "add"}.jpg`}
             alt={`icon-${active ? "remove" : "add"}`}
             className="mr-2"
           />
@@ -41,7 +41,7 @@ const HeaderAccordion: FC<BenefitAccordionProps> = ({
         </div>
       </div>
       <div className="header-accordion__arrow">
-        <img src="/images/icon-red-arrow-bottom.png" alt="" />
+        <img src={`${process.env.PUBLIC_URL}/images/icon-red-arrow-bottom.png`} alt="" />
       </div>
     </div>
   );

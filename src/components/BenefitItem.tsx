@@ -41,7 +41,7 @@ const BenefitItem: FC<Props> = ({ benefit, updateBenefits, moreInfo }) => {
           />
           <div className="d-flex">
             <img
-              src={`/images/arrow-${benefit.showDesc ? "top" : "bottom"}.jpg`}
+              src={`${process.env.PUBLIC_URL}/images/arrow-${benefit.showDesc ? "top" : "bottom"}.jpg`}
               alt={benefit.name}
             />
           </div>

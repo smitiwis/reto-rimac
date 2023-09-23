@@ -37,7 +37,7 @@ const Select: FC<SelectProps> = ({
       </select>
       {/* {errors.dni && <span className="error">{errors.dni}</span>} */}
       <div className="rimac-select__icon">
-        <img src="/images/icon-select.svg" alt="" />
+        <img src={`${process.env.PUBLIC_URL}/images/icon-select.svg`} alt="" />
       </div>
     </div>
   );
